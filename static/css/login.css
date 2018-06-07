@@ -1,6 +1,7 @@
 #all {
     text-align: center;
     width: 40%;
+    height: 80%;
     margin-left: auto;
     margin-top: 10%;
     margin-right: auto;
@@ -12,7 +13,7 @@
     color: #0fff43;
 }
 .myh1 h1{
-    font-size: 120px;
+    font-size: 10%;
 }
 
 .mybody{
