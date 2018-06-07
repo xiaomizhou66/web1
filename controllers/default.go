@@ -7,7 +7,21 @@ import (
 type LoginController struct {
 	beego.Controller
 }
-
 func (c *LoginController) Get() {
 	c.TplName = "login.html"
+}
+
+
+type Login1Controller struct {
+	beego.Controller
+}
+func (c *Login1Controller) Get() {
+	c.TplName = "login1.html"
+}
+
+type HomeController struct {
+	beego.Controller
+}
+func (c *HomeController) Get() {
+	c.TplName = "home.html"
 }
