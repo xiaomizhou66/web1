@@ -1,7 +1,6 @@
 #all {
     text-align: center;
     width: 40%;
-    height: 80%;
     margin-left: auto;
     margin-top: 10%;
     margin-right: auto;
@@ -13,22 +12,24 @@
     color: #0fff43;
 }
 .myh1 h1{
-    font-size: 10%;
+    font-size: 40px;
 }
 
 .mybody{
     border: 1px solid rgba(128, 93, 95, 0.45);
     text-align: left;
 }
+.myclass{
+    text-align:center;
+    text-align-all: justify;
+}
 
 .myform1{
     position: relative;
-    width: 20%;
     top: 20px;
 }
 .myform2{
     position: relative;
-    width: 20%;
     top: 20px;
     text-align: right;
 
