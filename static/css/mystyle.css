@@ -1,19 +1,21 @@
+                                                                                                                            /*login登录页面css*/
 .offset-left{
     margin-left: 20px;
 }
 .offset-right{
     margin-right: 20px;
 }
-.row h2{
+.row h2 {
     color: #0fff43;
     margin-bottom: 10%;
 }
+
 .row img{
+    margin-top: 10%;
     margin-bottom: 20%;
     width: 80%;
-
-
 }
+
 
 @font-face {
     font-family: 'iconfont';  /* project id 699026 */
@@ -62,4 +64,93 @@
 }
 .my-border{
     border:1px solid #e2e2e2;
+}
+                                                                                                                            /*home主页css*/
+ .home-nav{
+     margin-top:25px;
+ }
+.home-nav-img{
+    width:180%;
+}
+. my-row1-backgroud{
+    background: #ffffff;
+    border: 0px;
+}
+.myhomeform{
+    padding-left:120px
+}
+
+.btn-sm-md-xs{
+    padding: 4px 7px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+
+}
+
+.my-col-lg-3{
+    padding-left:1px;
+    padding-right:0px;
+}
+.my-row{
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+#daohang {
+    margin-right: 93px;
+}
+
+#zuixinkecheng{
+    margin-left: 13px;
+    margin-top: 30px;
+}
+
+#zhiyefangxiang ul ul{
+    border: 0px solid #805d5f;
+    background: #ffffff;
+}
+#zhiyefangxiang ul ul li{
+    width:210px;
+    margin-top: -20px;
+    text-align: center;
+}
+#zhiyefangxiang ul li{
+    margin-top: 30px;
+
+}
+
+#zhishitixi {
+    margin-left: 13px;
+    margin-top: 30px;
+
+}
+#zhishitixi p{
+    font-size: 18px;
+}
+#zhishitixi ul ul{
+    border: 0px solid #805d5f;
+    background: #ffffff;
+}
+#zhishitixi ul ul li{
+    width: 150px;
+    margin-top: -20px;
+    text-align: center;
+}
+
+#zhishitixi ul li{
+    margin-top: 30px;
+    margin-right: 8px;
+    margin-left: -10px;
+
+}
+#yejiao{
+    margin-top: 20px;
+    background-color: #ffffff;
+    border:1px solid rgba(128, 93, 95, 0.16);
+}
+#yejiao p{
+    text-align: center;
+}
+#yejiao svg{
+    margin-top: 10px;
 }
