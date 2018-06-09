@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 1</title>
+
+    <!--link中h1{color: red;} 颜色为红色  -->
+    <link rel="stylesheet" type="text/css" href="../static/css/test.css">
+    <!--../static/css/test.css    相对路径，这个test1.html与test.css文件的相对路径，test1.html 的当前路径是 views，
+        而test.css的当前路径是static/css，  他们属于web1文件夹下，
+          所以test1.html用..两个点返回上一层路径web1中，然后进入到./static/css中，最后就是test.css这个文件-->
+
+    <!-- 当link在style前面的时候他的样式被后面的style覆盖，最终显示紫色。
+        反之，如果link在后面就会显示link的颜色，
+        一般来说别人都是把link放在前面的。这样内部样式就有优先于link外部样式了-->
+    <style type="text/css">
+     h1{color: rebeccapurple;}
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>刘小米</h1>
+</div>
+</body>
+</html>
