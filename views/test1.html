@@ -6,15 +6,27 @@
 
     <!--link中h1{color: red;} 颜色为红色  -->
     <link rel="stylesheet" type="text/css" href="../static/css/test.css">
-    <!--../static/css/test.css    相对路径，这个test1.html与test.css文件的相对路径，test1.html 的当前路径是 views，
+    <!--本例知识点一【优先级】、
+        ../static/css/test.css    相对路径，这个test1.html与test.css文件的相对路径，test1.html 的当前路径是 views，
         而test.css的当前路径是static/css，  他们属于web1文件夹下，
-          所以test1.html用..两个点返回上一层路径web1中，然后进入到./static/css中，最后就是test.css这个文件-->
-
-    <!-- 当link在style前面的时候他的样式被后面的style覆盖，最终显示紫色。
+        所以test1.html用..两个点返回上一层路径web1中，然后进入到./static/css中，最后就是test.css这个文件
+        当link在style前面的时候他的样式被后面的style覆盖，最终显示紫色。
         反之，如果link在后面就会显示link的颜色，
         一般来说别人都是把link放在前面的。这样内部样式就有优先于link外部样式了-->
     <style type="text/css">
-     h1{color: rebeccapurple;}
+          h1{color: rebeccapurple;}
+          .q{
+              width: 50%;
+              height: 400px;
+              border: 1px solid red ;
+              text-align: center;
+              margin: 0 auto 0 auto;
+              display: table;
+          }
+        .juzhong{
+            display:table-cell;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -22,5 +34,51 @@
 <div>
     <h1>刘小米</h1>
 </div>
+
+
+<div class="q">
+    <div class="juzhong">
+            <p>小米</p>
+            <p>小米</p>
+            <img src="../static/img/rabbit.gif">
+    </div>
+</div>
+<!--本例知识点二【文本居中】、
+    这三段文字
+            <p>小米</p>
+            <p>小米</p>
+            <img src="../static/img/rabbit.gif">
+    水平并且垂直都居中。
+    我们首先要知道垂直居中是对行内元素或者是table单元格有效的，而在这里，没有行内元素也没有表格元素。
+    更新为行内元素span是不可能的，因为它们并不能在外面添加span标签来变为行内元素。
+    那么就想到要变成table单元格了。
+    要变成单元格，那么它要有一个父元素是table表格，
+    1、在外面添加一个div作为它的父元素，父元素的class为q
+    2、定义父元素的
+        宽度，子元素可以继承，直接继承，或者%比继承
+        高度，子元素可以继承，直接继承，或者%比继承
+        边线，子元素不会继承！！！！！！，在这里是为了显示效果用的
+        文本居中，子元素会继承
+        边距，子元素不会继承！！！！！，这里设计上下为0，左右为auto，为了让边框居中！，一定要加上左右auto，否则在浏览器中可能会出现边框不居中的情况。
+                                        这里宽度设计的是50%，为屏幕的50%，它可能占用的是屏幕的左半部分，然后文本居中，并没有做到在屏幕居中。
+                                        加上auto就会让它肯定是屏幕居中
+       展示，为表格table
+              .q{
+              width: 50%;
+              height: 400px;
+              border: 1px solid red ;
+              text-align: center;
+              margin: 0 auto 0 auto;
+              display: table;
+          }
+        .juzhong{
+            display:table-cell;
+            vertical-align: middle;
+        }
+        然后这三段的边框就继承了父元素的  宽度，高度，文本居中，接下来设计垂直居中
+        展示，单元格
+        垂直居中，middle，这样就ok了
+    -->
+
 </body>
 </html>
