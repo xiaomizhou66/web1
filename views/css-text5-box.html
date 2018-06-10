@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>box</title>
+    <style>
+      /*  div{
+            width: 50%;
+            border: 20px dotted red;
+        }*/
+        span{display: none;
+            }
+      .zuomicang a:hover  span {display: block}
+      .zuomicang1 a:hover  span {display: inline}
+    </style>
+</head>
+<body>
+
+<!--
+      盒子模型，对网页布局很重要
+
+      盒子其实就像是生活中的盒子，用来装东西，它也还可以装在其他盒子里面，就像是快递包裹一样。
+      盒子，div
+           下面的图片就是它的本属性值。
+            -->
+<div>
+    <img src="../static/img/box.png"/>
+</div>
+<br/>
+<!--
+盒子模型的属性
+
+     ①width：px  %    还有max-width   min-width    这2个最大最小属性在ie6浏览器不可以用，有兼容性问题
+     ②height：px %    还有max-height   min-height  这2个最大最小属性在ie6浏览器不可以用，有兼容性问题
+     块级元素占据的是整个屏幕的100%，一整行
+     1、块级元素可以设置宽度，高度  div， p  ul等等
+     2、替换元素img，input，textrea 可以设置宽度高度，其他元素是不可以设置的
+
+    ③border：1px solid red;  边框， 不可以被继承！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！不可以被继承？
+      border的值，none（默认），solid(实心)，dashed（虚线），hidden（隐藏），double（双线）,outset（3d）,dotted（点虚）等等
+
+      附加：border-left/right/top/bottom 单独设置四个边框
+
+     ④padding：内边距，填充，指的是内容到边框的距离，不能设置为负值！！！！！
+        paddingr-left/right/top/bottom
+
+     ⑤margin：外边距，指的是元素与元素之间的距离，可以设置为负值！！！！
+       marginr-left/right/top/bottom
+       设置margin：auto；可以达到水平居中的效果
+       在垂直方向上，两个相邻的div都设置了margin，他们的值是取最大值，而不是相加。如：
+           div1设置为margin-bottom：30px，div2设置为margin-top：10px，那么他们之间的边距是30px，
+
+
+           大多数框模型的属性，margin，padding，背景，border都不会继承，毕竟人们不会希望一个段落中每个子元素都会继承父元素的边距
+           <!DOCTYPE html> 文档类型标明之后，所有浏览器都会以标准模型来解析模型，否则会被解析成不一样的模型
+            -->
+  <div>
+      <p>小米小米小小米</p>
+  </div>
+
+
+<!--
+ 块级元素：
+ 行内元素：
+    将块级元素与行内元素互相转换 inline    ，block   ，那么之前的多行垂直居中是不是可以用这种办法？？？？？？？？？？？？？？？？？？
+    例如
+  div{display:inling}
+  设计为行内元素之后，就无法设计宽高了，padding与margin也只能在水平方向生效，垂直方向无效了
+  span{display:block；
+        width：
+        height： }
+  行内元素设计为块级元素之后就可以设计它的宽度，高度了，padding与margin 也可以用了
+  还有inline-block，行内块元素，这个就可以同时具有块级与行内元素的属性了
+
+ -->
+
+<!--display属性 一个很好玩的例子，
+     文字不显示，当鼠标经过的时候就会显示出来，
+     下面呢的a闭标签一定是在span外面哦
+     display常用的值：none，block，inline
+
+      span{display: none;}         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   先隐藏
+      .zuomicang a:hover  span {display: block}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   这个层叠要有先后，父子
+      .zuomicang1 a:hover  span {display: inline}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 这个层叠要有先后，父子
+    -->
+<div class="zuomicang">
+    <p>我是小米，我们来捉迷藏，<a href="#" >点我试试<span>你好呀，要不要一起玩游戏啦</span></a></p>
+</div>
+<div class="zuomicang1">
+    <p>我是小米，我们来捉迷藏，<a href="#" >点我试试<span>你好呀，要不要一起玩游戏啦</span></a></p>
+</div>
+
+
+<div>
+    <img style="width: 50%" src="../static/img/box1.png"/>
+</div>
+<div>
+    <img style="width: 50%" src="../static/img/box-display.png"/>
+</div>
+
+</body>
+</html>
