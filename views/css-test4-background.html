@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background</title>
+    <style>
+        .a{
+            width: 160px;
+            height: 160px;
+            border: 5px dashed red;
+            background-color: #2e6da4;
+            padding: 10px;
+            margin: 10px;
+            background-image: url("../static/img/rabbit.gif");
+             }
+       .b{
+           width: 400px;
+           height: 1500px;
+           background-image: url("../static/img/QQ图标.jpg");
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+       }
+
+    </style>
+</head>
+<body>
+
+<div class="a">
+    <p>刘小米刘小米刘小米小米</p>
+</div>
+<div class="b">
+    <p>刘小米刘小米刘小米小米</p>
+</div>b
+
+<!--这是插入图片 -->
+<div >
+    <img src="../static/img/css-test4-background.png"/>
+</div>
+<!--这是插入图片 -->
+</body>
+</html>
+
+        <!--
+        background-color:颜色覆盖，内容，内边距，边框，  但是不包括外边距
+        background-image:url/none ,颜色覆盖，内容，内边距，边框，  但是不包括外边距
+                        none,用于取消背景图片
+        background-image-repeat:repeat-x，repeat-y，no-repeat
+        背景颜色与背景图片设置都是一个效果，最后显示的是背景图片，但是有的时候为了避免背景图片无法加载，背景颜色还是需要设置的
+        当背景图片没有显示出来的时候就可以提体现背景颜色了。
+
+        background-attachment，fixed  页面移动图不动，scrool 随着鼠标移动移动，背景图片是否滚动，重点：div框的高度要够高
+        background-position：length length，% %，left top，left bottom，等。right，left，bottom，center  位置有水平位置，垂直位置，默认是居中
+
+
+
+        简写：background的值不分先后顺序？？？？？？？？？？？确定正确么？？-->

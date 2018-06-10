@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行高、字符间距、单词间距、学习</title>
+</head>
+<style>
+    div{
+        font-size: 20px;
+        text-index: 2em;
+        line-height: 1.3em;
+    }
+    .text1{
+        font-size: 50px;
+        line-height: 1.3em;
+    }
+    .text3{
+        letter-spacing: 10px;
+    }
+
+    .text4{
+        word-spacing: 10px;
+    }
+    .text5{letter-spacing: 10px;}
+    .text0 a {text-transform:uppercase;text-decoration:none;}
+
+    .text7{text-decoration: underline;}
+</style>
+<body>
+
+<div>
+    <p class="text1">xiaomixiaomixiaoxiaomi</p>
+    <p class="text2">xiaomixiaomixiaoxiaomi</p>
+    <p class="text3">xiaomixiaomixiaoxiaomi</p>
+    <p class="text4">我们我们我们  我们 我们 我们 xiaomi xiaomi xiao xiaomi</p>
+    <p class="text5">我们我们我们  我们 我们 我们 xiaomi xiaomi xiao xiaomi</p>
+    <p class="text6"><a href="#" class="text0">xiaomi xiaomi xiao xiaomi </a></p>
+    <p class="text7">xiaomi xiaomi xiao xiaomi</p>
+</div>
+
+<!-- 行高 line-height
+        行高的单位有px % em
+        1、行高使用%与em比较合适，因为它是相对于font-size 来计算的，如果设计为px，下次更新字体大小的时候可能会出现行高不够，重叠的现象。
+        2、行高可以继承，但是它继承的是计算后的值，不会计算计算公式，
+            所以用em与%的弊端就是，子元素必须重新再写它的line-height，否则也会出现更新行高之后重叠现象
+            比如说在这个例子中text1继承的行高为20x1.3=26px，不会继承公式，
+            26与他的字体高度50px大小，肯定会出现重叠现象，重新设计text1的高度就ok了--
+
+
+      其他内容学习：
+      word-spacing: 10px; 单词间距设计
+      letter-spacing: 10px; 字符间距设计
+      text-transform: capitalize; 首字母大写,uppercase 全都大写，lowercase，全都小写，none，格式不变
+      text-decoration:underline,文本加下划线，与ins一样
+                              overline,文本上划线
+                        line-through，文本中划线，与del一样
+                        blink,闪烁文本，现在不用这个了，有兼容性的问题，实践过后发现都没有闪烁效果
+                        none,文本不加修饰 这个属性一般用于链接取消下划线!!!!
+                        几个属性值可以用几个，其他可以共存，一旦用了none就会覆盖前面的属性值。
+       注意，链接使用none的时候需要用到
+               .text0{ text-decoration:none;}  正确
+               .text6{ text-decoration:none;}  错误   因为text-decoration  不会继承！！！！！！！！！！！！！！！！！！！！！！！！
+                 a { text-decoration:none;}    正确
+               .text0 a{ text-decoration:none;}  错误    父子关系错误，
+               .text6 a{ text-decoration:none;}  正确   .text6 里面的a元素
+
+
+      >
+
+
+</body>
+</html>
