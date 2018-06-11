@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+    <!-- div设置left=0有什么卵用？？？不是本来就是0么？？？？？？？-->
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            width:500px;
+            height: 1500px;
+        }
+        .text{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+    /*    .div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position:absolute;
+            right: 10px;
+            bottom:0px;
+        }
+        .div2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position:relative;
+            left:0px;
+            bottom:0px;
+        }
+        .divfu{
+            width:200px;
+            height:200px;
+            background: black;
+            margin-left:300px;
+            margin-top:300px;}
+        .divzi{
+            width:100px;
+            height:100px;
+            background: yellow;
+            position:absolute;
+            left: 0px;
+            top:0px;
+        }*/
+
+    </style>
+</head>
+<body>
+
+    <!--在标准流里面，如果div里面是行内元素，那么div1与div2是两行紧贴着
+        如果换成p元素，那么就是有间隙的两行，因为本来p元素即使换段落了有间隙的 -->
+{{/*
+<div class="div1">
+   <span>xiaomi1</span>
+</div>
+<div class="div2">
+   <span>xiaomi1</span>
+</div>
+    <br/>
+<div class="divfu">
+    <div class="divzi">
+    </div>
+</div>
+*/}}
+
+<div class="text">
+</div>
+
+</body>
+</html>
+
+<!--本章学习：标准流   定位和参数  网络布局demo   层级-->
+        <!--html的常用3中布局方式，
+        1、标准流，网络默认的布局方式，顺序布局，div，表格，块级行内元素等等的顺序布局
+        2、float浮动
+        3、定位position
+
+        正常标准流中，块级元素独占一行，
+                        行内元素在一行，直到改行挤满才会换到下一行
+
+
+
+
+
+       本结将position，通过属性改变元素，让它脱离标准流。
+       static 、relative、absolute（脱离标准流，使用场景？？）、fixed（脱离文档流，使用场景：登录弹窗，对联广告）
+        元素设置了position之后，后面的left/right/top/bottom 的属性值才有效，否则都是默认的标准流，从左上角开始的
+
+
+      ① position：static  ，静态的，
+      ②position：relative，相对的，当有重叠的时候后写的元素会覆盖先写的元素，后写的元素的层级高于先写的元素层级
+        当position值使用relative的块，他们的距离都是相对屏幕的左边、上边两条边来说的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        left：50px；    指的是屏幕左边 距离 元素左边的距离，（因为元素默认的标准流都是在屏幕的左上角的，这些距离都是相对左边与上边来说的）
+        right：50px；   指的是屏幕左边 距离 元素右边的距离，（因为元素默认的标准流都是在屏幕的左上角的，这些距离都是相对左边与上边来说的）
+        top：50px；     指的是屏幕上边 距离 元素上边的距离，（因为元素默认的标准流都是在屏幕的左上角的，这些距离都是相对左边与上边来说的）
+        bottom：50px    指的是屏幕上边 距离 元素下边的距离，（因为元素默认的标准流都是在屏幕的左上角的，这些距离都是相对左边与上边来说的）
+           像下面这样设置，即使是把div1，调成  bottom:50px;，div1元素上移动了，但是div2不会受到div1的影响，还是在它原来的位置，除非重新设置它的值！！！！！！！！
+           position:relative;
+           left: 50px;
+           bottom:50px;
+           position:relative;
+           left: 0px;
+           top:0px;
+       ③position：absolute，绝对的，他们的距离是相对四条表来说的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+          当position值使用absolute的块，是脱离标准流的，
+             left：50px；    指的是屏幕/窗口左边 距离 元素左边的距离，
+             right：50px；   指的是屏幕/窗口右边 距离 元素右边的距离，
+             top：50px；     指的是屏幕/窗口上边 距离 元素上边的距离，
+             bottom：50px    指的是屏幕/窗口下边 距离 元素下边的距离，
+           脱离标准流 如下本来块的高度是100px的，一旦设置了position属性值为absolute，
+            在网页就找不到div的高度了，它脱离标准流，浏览器检测不到它的高度了，这是绝对定位的特性
+            width：100px；
+            height：100px；
+            position:absolute;
+            right: 10px;
+            top:0px;
+  【【【.divfu{
+           width:200px;
+           height:200px;
+           margin-left:300px;
+           margin-top:300px;
+          .divzi{
+           width：100px;
+           height:100px;
+           position:absolute;
+           left: 0px;
+           top:0px;}
+           position:absolute;脱离标准流！！！像上面的代码，父元素是不会出现在做上角的，但是子元素会出现在做上角，它绝对距离
+           相对是不行的，相对的是会跟随父元素的边距的。】】】】
+       ④position：fixed，   固定的 ，
+         当position值使用fixed的块，他们的距离是相对四条表来说的！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+         left：50px；    指的是窗口/屏幕左边 距离 元素左边的距离，   而且是固定不动的，滚动条动！这些div在窗口的位置也不会改变！！！
+         right：50px；   指的是窗口/屏幕右边 距离 元素右边的距离，   而且是固定不动的，滚动条动！这些div在窗口的位置也不会改变！！！
+         top：50px；     指的是窗口/屏幕上边 距离 元素上边的距离，   而且是固定不动的，滚动条动！这些div在窗口的位置也不会改变！！！
+         bottom：50px    指的是窗口/屏幕下边 距离 元素底边的距离，    而且是固定不动的，滚动条动！这些div在窗口的位置也不会改变！！！
+              像下面的设置，div1就是在左下角的，div2会是第一个相对左边、上边来考虑的元素
+              position:fixed; 是脱离正常的文档流！！！拥有fixed属性值的，文档将会在窗口进行它的位置移动。
+              使用场景：登录弹窗，对联广告！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+       ⑤position：inherit， 继承
+
+  元素设置了position之后，后面的left/right/top/bottom 的属性值才有效，否则都是默认的标准流，从左上角开始的
+
+
+
+
+其他
+        *{
+            padding: 0px;
+            margin: 0px;
+        }  这段代码是清除元素默认格式的。将内外边距都设置为0
+
+
+          z-index：auto/number/inherit
+          eg：position：relative
+              z-index：1
+           可以设置元素的叠加顺序，但依赖定位属性，
+            z-index大的元素会覆盖 z-index小的元素
+             z-index为auto的元素不参与层级比较
+              z-index为负值，元素将被普通流的元素覆盖
+
+              number是用来设置层级的，number越大层级越大，默认层级是0 ，层级可以是负值
+              z-index是对于已经设置了position的元素来说的，没有设置的是不能设置的
+
+              假如1父元素的  层级 大于 2 父元素
+              那么不管1父元素里面的number是什么，它都会优先于2父元素
+        -->

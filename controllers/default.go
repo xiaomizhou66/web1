@@ -30,5 +30,5 @@ type XuanzeqiController struct {
 	beego.Controller
 }
 func (c *XuanzeqiController) Get() {
-	c.TplName = "css-text1-xuanzqi.html"
+	c.TplName = "1css-text1-xuanzqi.html"
 }
