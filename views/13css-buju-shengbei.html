@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圣杯布局</title>
+    <style>
+        *{
+            padding: 0;margin: 0;
+        }
+        .header,.footer{
+            float: left;
+            width: 100%;
+            background: #414141;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .container{
+            padding: 0 200px 0 200px;
+        }
+        .middle,.left,.right{
+            position: relative;
+            float: left;
+            min-height: 300px;
+        }
+        .middle{
+            width: 100%;
+            background: #0fff43;
+        }
+        .left{
+            width: 200px;
+            background: yellow;
+            margin-left: -100%;
+            /*         使用float导致，，这里使用-100%可以保证它在最左侧*/
+            left:-200px;
+        }
+        .right {
+            width: 200px;
+            background: #fbff4f;
+            margin-left: -200px;
+            right:-200px
+        }
+            /*         使用float导致，，这里使用-200px使他到上一行/
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class="header">头部</div>
+<div class="container">
+    <div class="middle">中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏
+        中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中
+        间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏
+        中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏
+        中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏中间栏</div>
+    <div class="left">左侧栏</div>
+    <div class="right">右侧栏</div>
+</div>
+<div class="footer">页脚</div>
+
+</body>
+</html>
+
+<!-- 圣杯布局，
+1、 left与right设置等宽值，中间自适应。
+        指的是页面宽度改变，缩放页面，中间的栏会自适应（相应调整内容），但是两边的栏在屏幕不会改变
+2、middle栏优先在浏览器中渲染，
+3、任意一栏 可以 设置任意的高度，不会影响其他列？？？？？？？？？？？、什么鬼意思
+4、用简单的css语句来实现，减少hack语句
+<div class="header"></div>       头部，
+<div class="container">           主体，或者用main  做主体部分
+      <div class="middle"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+</div>
+<div class="footer"></div>       页脚
+
+
+
+
+双飞翼布局
+<div class="header"></div>       头部，
+<div class="container"></div>    主体，或者用main  做主体部分
+<div class="sub"></div>          左侧，
+<div class="extra"></div>        右侧，
+<div class="footer"></div>       页脚
+
+
+
+
+-->

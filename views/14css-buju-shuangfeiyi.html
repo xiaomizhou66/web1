@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .header{
+            width: 100%;
+            height: 30px;
+            float: left;
+            background: #8c8c8c;
+            text-align: center;
+            line-height: 30px;
+        }
+        .container,.sub,.extra{
+            float: left;
+            min-height: 300px;
+        }
+        .container{
+            width: 100%;
+            min-height: 300px;
+        }
+        .container-inner{
+            margin-left: 200px;
+            margin-right: 200px;
+            background: #ff94d7;
+        }
+        .sub{
+            width: 200px;
+            background: #66afe9;
+            margin-left: -100%;
+        }
+        .extra{
+            width: 200px;
+            background: #66afe9;
+            margin-left: -200px;
+        }
+        .footer{
+            width: 100%;
+            height: 30px;
+            float: left;
+            background: #8c8c8c;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">头部</div>
+<div class="container">
+    <div class="container-inner">
+        <p>主体</p>
+    </div>
+</div>
+<div class="sub">左侧</div>
+<div class="extra">右侧</div>
+<div class="footer">页脚</div>
+
+</body>
+</html>
+
+        <!--
+        圣杯布局，相对定位，float，负边距布局，
+        <div class="header"></div>       头部，
+
+        <div class="container">           主体，或者用main  做主体部分
+              <div class="middle"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+        </div>
+
+        <div class="footer"></div>       页脚
+        双飞翼布局,去掉相对布局，只需要float和负边距
+
+        <div class="header"></div>       头部，
+
+        <div class="container">          主体，或者用main  做主体部分
+            <div class="container-inner">
+            </div>
+        </div>
+
+        <div class="sub"></div>          左侧，
+        <div class="extra"></div>        右侧，
+        <div class="footer"></div>       页脚
+-->
