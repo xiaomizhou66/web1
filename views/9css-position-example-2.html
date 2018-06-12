@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position布局</title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        .page{
+            width: 100%;
+            height: 4043px;
+            background: #8c8c8c;
+        }
+        .nav{
+            width: 160px;
+            height: auto;
+            background: orangered;
+            position: fixed;
+            left: 0px;
+            top: 50%;
+            margin-top:-103px;
+        }
+        .nav-li{
+            width: 100%;
+            height: auto;
+            background: #ff94d7;
+            border-bottom: 1px solid black ;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .nav-yiji{
+            width: 160px;
+            height: 40px;
+        }
+        .nav-li ul{
+            width: 100%;
+            height: auto;
+            display: none;
+            list-style-type: none;
+        }
+        .nav-li ul li{
+            width:100%;
+            height:40px;
+            background: yellow;
+            border-bottom: 1px dashed black ;
+            line-height: 40px;
+            text-align: right;
+        }
+        .nav-li:hover ul{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="page"></div>  <!--设计网页的宽高-->
+
+<div class="nav">
+    <div class="nav-li">
+        <div class="nav-yiji">小米粥1</div>
+        <ul>
+            <li>xiaomi1</li>
+            <li>xiaomi2</li>
+            <li>xiaomi3</li>
+            <li>xiaomi4</li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+    <div class="nav-li">
+        <div class="nav-yiji">小米粥2</div>
+        <ul>
+            <li>xiaomi1</li>
+            <li>xiaomi2</li>
+            <li>xiaomi3</li>
+            <li>xiaomi4</li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+    <div class="nav-li">
+        <div class="nav-yiji">小米粥3</div>
+        <ul>
+            <li>xiaomi1</li>
+            <li>xiaomi2</li>
+            <li>xiaomi3</li>
+            <li>xiaomi4</li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+</div>
+</body>
+</html>
+
+
+<!-- 盒子模型布局，是通过改变div的内边距外边距来改变元素的位置
+position定位布局，是通过改变div在窗口中的位置来改变元素的位置-->
+
+
+<!--
+实际操作:
+用position来做导航(区别于普通导航，这个指的是在屏幕上边不会动的导航，一般做在左边中间)
+用
+.nav{ width: 160px;height: auto;background: orangered; position: fixed;left: 0px;top: 50%;margin-top: ;}
+.nav-li{width: 160px;height: 40px;background: #ff94d7;border-bottom: 1px solid black ;line-height: 40px;text-align: center;}
+<div class="nav">
+<div class="nav-li">小米粥1</div>
+<div class="nav-li">小米粥2</div>
+<div class="nav-li">小米粥3</div>
+<div class="nav-li">小米粥4</div>
+<ul>
+    <li>xiaomi1</li>
+    <li>xiaomi2</li>
+    <li>xiaomi3</li>
+    <li>xiaomi4</li>
+</ul>                  一级栏目全都用的是div，并不会用到列表来写导航，要做二级栏目之后用列表来做
+</div>                     这个办法设计需要得知做了多少栏目，再去设计nav元素的高，和位置top！！！！！！！！！！！！！！！！！
+
+
+上面的二级栏目跟一级栏目做的是兄弟div，这个在导航只有二级的时候还可以，但是一旦涉及到3级的话，这样设计就会显得臃肿了，
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+

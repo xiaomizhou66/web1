@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position布局</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .cont{
+            width: 100%;
+            height: 4000px;
+            background: #8c8c8c;
+        }
+        .op{
+            width: 100%;
+            height: 100%;
+            background: #2e6da4;
+            position:fixed ;
+            left:0px ;
+            top:0px ;
+        }
+        .login{
+            width: 360px;
+            height: 360px;
+            background:#ff94d7;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -180px;
+            margin-top: -180px;}
+
+    </style>
+</head>
+<body>
+
+
+<div class="cont"></div>
+<div class="op"></div>
+<div class="login"></div>
+
+
+
+
+</div>
+
+</body>
+</html>
+
+    <!-- 盒子模型布局，是通过改变div的内边距外边距来改变元素的位置
+    position定位布局，是通过改变div在窗口中的位置来改变元素的位置-->
+
+
+        <!--
+        实际操作:
+        用position来做弹窗登录
+        <div class="cont"></div>
+        <div class="op"></div>
+        <div class="login"></div>
+        这个login就是做出来的弹窗，固定位置是50%之后，还要写个外边距，因为他是屏幕/窗口左边到div的左边，屏幕/窗口上边对div上边，而不是中间
+        但是做cont和op是干毛用的？？？？？？   /*html,body{ width: 100%;height: 100%; }*/ 又是干毛用的？？？？？？？？？
+        /*html,body{ width: 100%;height: 100%; }*/
+        .cont{width: 100%;height: 4000px;background: #8c8c8c;}
+        .op{width: 100%;height: 100%;background: #2e6da4;position:fixed ;left:0px ;top:0px ;}
+        .login{width: 360px;height: 360px;background:#ff94d7;position: fixed;left: 50%;top: 50%;margin-left: -180px;margin-top: -180px;}-->
+
+

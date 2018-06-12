@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页布局学习</title>
+    <style>
+        *{padding: 0px;margin: 0px;}
+
+/*        .container{
+            width: 50%;
+            height:200px;
+            background: #8c8c8c;
+            text-align: center;
+            line-height:200px ;
+            position:absolute;
+            left:50%;
+            top: 50%;
+            margin-left: -25%;
+            margin-top: -100px;
+         }*/
+        body{
+            width: 100%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .header{
+            width:100% ;
+            height: 50px;
+            background:#ff94d7 ;
+            position: fixed;
+            top: 0px;
+        }
+        .banner {
+            width: 80%;
+            height: 500px;
+            margin: 0px auto;
+            background: #cdff5a;
+            padding: 50px;
+
+        }
+        .container {
+            width: 80%;
+            height: 1000px;
+            margin: 0px auto;
+            background: #1e3eff;
+            padding: 50px;
+        }
+        .footer{
+            width:100% ;
+            height: 160px;
+            margin: 0px auto;
+            background: #fbff4f;
+            padding: 50px;
+        }
+
+
+
+
+        .nav{
+            width: 135px;
+            height: auto;
+            background: #805d5f;
+            position: fixed;
+            left: 0px;
+            top: 50%;
+            margin-top:-103px;
+        }
+        .nav-li{
+            width: 100%;
+            height: auto;
+            background: rgb(0% 255 255);
+            border-bottom: 1px solid black ;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .nav-1{
+            width:  100%;
+            height: 40px;
+        }
+        .nav-li ul{
+            width: 100%;
+            height: auto;
+            display: none;
+            list-style-type: none;
+            font-size: 12px;
+        }
+        .nav-li ul li{
+            width:100%;
+            height:40px;
+            background: yellow;
+            border-bottom: 1px dashed black ;
+            line-height: 40px;
+            text-align: right;
+            position: relative;
+        }
+        .nav-li:hover ul{
+            display: block;
+        }
+
+        .nav-3{
+            width: 100%;
+            height: auto;
+            background: #0fff43;
+            position: absolute;
+            left: 100%;
+            top: 0px;
+        }
+        .nav-3-li{
+            width: 100%;
+            height: 40px;
+            border: 1px solid black;
+            display: none;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .nav-li ul li:hover .nav-3-li{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!--页面4大内容 -->
+<div class="header">111</div>
+<div class="banner">222</div>
+<div class="container">333</div>
+<div class="footer">444</div>
+
+<!-- 左边固定导航栏-->
+<div class="nav">
+    <div class="nav-li">
+        <div class="nav-1">一级栏目1</div>
+        <ul>
+            <li>二级栏目1
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目2
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目3
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目4
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+    <div class="nav-li">
+        <div class="nav-yiji">一级栏目2</div>
+        <ul>
+            <li>二级栏目1
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目2
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目3
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目4
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+    <div class="nav-li">
+        <div class="nav-yiji">一级栏目3</div>
+        <ul>
+            <li>二级栏目1
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目2
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目3
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+            <li>二级栏目4
+                <div class="nav-3">
+                    <div class="nav-3-li">三级栏目1</div>
+                    <div class="nav-3-li">三级栏目2</div>
+                    <div class="nav-3-li">三级栏目3</div>
+                </div>
+            </li>
+        </ul>    <!--全都用的是div，并不会用到列表来写导航-->
+    </div>
+</div>
+
+
+</body>
+</html>
+
+        <!--网页布局
+
+         前端工程师就是将艺术和技术完美的融合，学习好网页布局是学好前端的基础
+
+         认识网页布局：
+         1、网页布局就是  以适合浏览的方式将图片和文字排放在页面不同的位置
+         2、布局模式有很多种，不同的制作者会有不同的布局设计
+            前面我们就知道了用float来改变div的位置、用position来改变div的设置
+
+
+            本节行布局、多列布局、圣杯布局、双飞翼布局、以及其他的布局学习
+            （htiml  css  div  float position）
+                        -->
+
+<!-- 基础行布局学习，
+     就是单行字的布局,
+         <style>
+        *{padding: 0px;margin: 0px;}     取消元素原有样式,当值为0 的之后可以不写单位px
+        .container{                    给容器去样式
+            width: 50%;
+            height:200px;
+            background: #8c8c8c;
+            text-align: center;          文字水平居中
+            line-height:200px ;          单行文字垂直居中
+            position:absolute;           绝对定位
+            left:50%;
+            top: 50%;
+            margin-left: -25%;
+            margin-top: -100px;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">页面容器</div>   定义一个div容器
+     -->
+
+
+<!--    行布局固定宽       ，给精确的width px值
+        行布局某部位自适应 ，根据自身要求更新width值
+        行布局导航随屏幕滚动
+-->
