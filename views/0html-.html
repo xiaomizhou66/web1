@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>html</title>
+    <style>
+
+    </style>
 </head>
 <body>
-
+  <input type=" image "  name="tijiao "   src="../static/css/ranbbit.gif">
+</body>
+</html>
 <!--
       1、没有utf-8的话，body里面的中文会出现乱码     utf-8          GB2312        gbk  等编码
           <!DOCTYPE html> 是一个文件类型声明，不是一个html标签
@@ -110,7 +115,282 @@
 -->
 
 
+<!--
+    10、 table 表格：
+        行 tr
+        th 标题行（居中加粗），可以不应th
+        td 列
+     使用场景：用于数据的展示
+     ①后台管理的数据展示，比如淘宝卖家的后台，
+     ②购物订单明细
+     <table>
+            <tr>   <th></th>     <th></th>   <th></th>   <th></th> </tr>
+            <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+    </table>
 
-</body>
-</html>
+
+   11、添加、删除行列，合并，
+     ①下不要考虑那些合并的单元格，合并的单元格部分都将他们先用单个单元格展示，都写上文字
+     ②添加，删除行列内容要正确知道他们正确的位置。  有没有简单的办法来删除啊？？？？？？？？？？？？？？？？？？？后面学习
+     ③添加，删除完成之后，现在来考虑合并，效果属性等等。
+     ④表格的标题，<caption></caption>
+
+
+     合并：
+     单词学习：行 row     列：columns ，简写为col
+     跨行合并：      跨列合并：colspan=""
+     ----------------------------------------
+      <table>
+            <tr>
+                    <th ></th>
+                    <th ></th>
+                    <th></th>
+            </tr>
+            <tr>
+                    <td rowspan="2"></td>
+                    <td></td>
+                    <td></td>
+            </tr>
+            <tr>
+
+                   <td></td>
+                   <td></td>
+            </tr>
+    </table>
+
+
+
+     ---------------------------------------------
+     <table>
+            <tr>
+                    <th colspan=" 2"></th>
+
+                    <th></th>
+            </tr>
+            <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            </tr>
+            <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+            </tr>
+    </table>
+
+   12、表格属性，属性值那么多，不需要背，后期用到就知道了
+   width：
+   border：
+   text-align：left、right、center
+   background
+   cellpadding：单元格内容到单元格的距离，填充
+   cellspacing：单元格与单元格的间距
+   frame：规定外边框哪个部分可以看见，above，lhs等等
+   rules：规定内边框哪个部分可以看见，值，none   rows行   cols列，等等
+
+
+
+   13、嵌套表格
+ <table>
+            <tr>   <th></th>                     <th></th>   <th></th>   <th></th> </tr>
+            <tr>   <td><table>  </table></td>     <td></td>   <td></td>   <td></td> </tr>
+            <tr>   <td></td>                     <td></td>   <td></td>   <td></td> </tr>
+            <tr>   <td></td>                     <td></td>   <td></td>   <td></td> </tr>
+    </table>
+
+    还有其他的嵌套，嵌套列表，嵌套段落，等等都是可以的，。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+-->
+
+
+
+<!--在浏览器中，表格是作为整体来解析的，整个表格解析完毕之后才会展示出来，如果表格很复杂那么就很难解析出来了，加载时间长，用户体检不好。
+     所以要使用表格优化标签，让它可以加载一部分就显示一部分，不要等整个表格都加载完再显示。
+
+     就是将表格划分结构，划分为多个表格，（在浏览器中它还是一个一个表格解析展示的，并没有违背原理）
+       表头thread （th）：放标题
+       主体tbody（td）：放表格内容能够
+       脚注tfoot      ：放脚注
+   <table>
+            <caption></caption>
+            <thread>
+                <tr>   <th></th>     <th></th>   <th></th>   <th></th> </tr>
+            </thread>
+            <tbody>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            </tbody>
+            <tfoot>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            </tfoot>
+    </table>
+
+    浏览器解析是从上到下的。但是在表格这里，它跳出了这个规定，它永远是先解析表头，然后是主体，最后是脚注，即使把脚注写在了前面，也是最后显示
+       <table>
+            <caption></caption>
+            <thread>
+                <tr>   <th></th>     <th></th>   <th></th>   <th></th> </tr>
+            </thread>
+                        <tfoot>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            </tfoot>
+            <tbody>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+                <tr>   <td></td>     <td></td>   <td></td>   <td></td> </tr>
+            </tbody>
+
+    </table>
+    上面两个文档显示的内容是一致的。
+     -->
+
+
+   <!--
+      表格也可以用来布局，这用在做简单的布局，其实不要用table布局！！更不要用于主页图片那种的布局！！！！！
+      如下面这种的可以用。
+
+      关于我们         友情链接
+      团队介绍           360搜索      淘宝     京东
+      人才招聘           简书        xxxx      xxxx
+      讲师招募           xxxx         xxxx    xxxx
+      联系我们           xxxx         xxxx
+      常见问题
+      友情链接
+
+
+
+      其实表格真的是跟不好，解析需要完全加载后显示，
+      跨行跨列也不好，
+      内嵌表格也不好，这个不要用表格来做，了解就好了
+      代码维护成本很高。
+      -->
+
+
+
+
+
+         <!--
+
+        14、表单：
+        一些网页需要注册，填写信息就是表单的应用，表单本身是不可见的，我们看到的是表单的元素
+
+         问题：这个name是干嘛的，name值是设计者取名的的，
+         value="初始值,用于没有选择填写的情况下就选择的值"/>， 填写好表单之后点击提交表单，相应的value值会传递给服务器
+         语法：
+        < form>
+            标签：<input type="类型属性"    name="名称"    placeholder="提示信息"   value="初始值"/>    半闭标签
+        </form>
+        类型属性：
+                  ① 文本域       type="text"      User name:  <input type="text"  name="username">
+                                                   First name: <input type="text" name="fname">
+                                                   Last name: <input type="text" name="lname" >
+
+                  ②  密码域       password
+
+                  ③ 文件域        file            Select images: <input type="file" name="img" multiple>
+
+                  ④ 复选框        checkbox        多选框，名字不要一样的
+                                                    <form>
+                                                        拥有的汽车
+                                                        宝马 <input type="checkbox" name="car1" value="baoma">
+                                                        宝马 <input type="checkbox" name="car1" value="baoma">
+                                                       宝马 <input type="checkbox" name="car1" value="baoma" checked>
+                                                    </form>
+
+                  ⑤单选框         radio           单选框就要取一样的name值，就只能选择一个了，checked就是预选值
+                                                    <form>
+                                                        男 <input type="radio" name="sex" value="man">
+                                                        女 <input type="radio" name="sex" value="female">
+                                                        保密<input type="radio" name="sex" value="secret" checked>
+                                                    </form>
+
+                  ⑥ 按钮          button          <input type="button "  name=" " value=" ">
+
+                  ⑦ 提交按钮      submit          <input type="submit"  name=" "   value="提交">
+
+                  ⑧ 重置按钮      reset            <input type=" reset "  name=" "   value="重置">
+
+                  ⑨ 隐藏域        hidden          <input type=" hidden "  name=" "   value="  ">
+
+   [图像提交按钮] ⑩ 图像域       image            <input type=" image "  name="image-button "   src=""> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!为了让按钮长得很好看
+
+                  ⑩①邮件域       email            E-mail: <input type="email" name="user_email">
+
+
+
+        -->
+
+     <!--下拉菜单与列表-->
+        <!--
+         <input>
+             <select>
+                 <option value="" >--请选择--</option>
+                 <option value="" selected>上海</option>
+                 <option value="">北京</option>
+                 <option value="">厦门</option>
+                 <option value="">深圳</option>
+            </select>
+        </input>
+
+       value才是传给服务器的值，上海这些字是展示用的
+       selected，默认选中
+       select的属性，
+            size，显示现象的个数
+            multiple，可以选择多个选项
+
+
+
+
+分组形式的下拉菜单
+     <input>
+             <select>
+                   <option value="" >--请选择--</option>
+                   <optgroup label="华东区">
+                         <option value="">上海</option>
+                         <option value="" selected>北京</option>
+                   </optgroup>
+                   <optgroup label="华南区">
+                       <option value="">厦门</option>
+                       <option value="">深圳</option>
+                    </optgroup>
+            </select>
+        </input>
+        -->
+
+
+
+
+
+
+<!-- ① 文本域  单行       User name:  <input type="text"  name="username">
+
+               多行      <textarea name="" rows=""  clos="" placeholder="请输入个人介绍" > </textarea>
+                        rows,设置多行文本域可见行数，
+                        cols，设置多行文本域可见列数
+                        placeholder，提示信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 拓展问题，表格能不能用<pre>与<span>来定义啊？？？？这样不是很简单了么？，这样不能设置样式！！
+        -->
+
+
+
+
 
