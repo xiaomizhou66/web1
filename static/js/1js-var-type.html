@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js入门学习</title>
+</head>
+<body>
+
+<script>
+   /* js声明变量，不需要类型，因为它可以是任意类型，具体的类型看具体使用的变量是什么类型来决定*/
+    var name1;   //声明name1是一个变量     js中语句结束需要加上分号结束
+    name1="marry";//给变量赋值，
+
+    var age =18; //声明的同时赋值
+
+    var email = "liuxiaomi0724@163.com",qq="88888888";    //多条赋值，各个变量中以逗号间隔
+
+    name="xiaimi";  //全局变量，放在函数中
+    nianji="9";
+
+    console.log(name1) //在浏览器页面程序中的console打印出来         这里是打印变量值             marry
+    console.log(typeof(name1)) //在浏览器页面程序中的console打印出来 这里是打印变量的类型，      string
+    console.log(isNaN(nianji)) //在浏览器页面程序中的console打印出来 这里是打印变量的类型，       false
+    email=Number(email)
+    console.log(email)
+
+   var topval="20px";           // 经常用于获取一个盒子的值，然后去改变值
+   topval=parseInt(topval);
+   console.log(topval);//在浏览器页面程序中的console打印出来    20
+   var username="liuxiaomi0724";
+   username=parseInt(username);
+   console.log(username);//在浏览器页面程序中的console打印出来    NaN
+
+   var bottomval="20px";           // 经常用于获取一个盒子的值，然后去改变值
+   bottomval=parseInt(bottomval);  //
+   console.log(parseInt(bottomval));//       20      打印bottomval的值，
+   console.log(parseInt(bottomval,16));//    32    以16进制打印bottom值，  问题：为什么我的十六值转换不成功啊？？？？？？？？？？？？？？？？
+   console.log(bottomval,16);//              20  16   打印bottomval的值， 和16，   问题：并不能反馈16进制，可以说是parseInt返回两个 参数么？？？？？？？
+
+
+
+    var c=parseFloat(0123);   //声明一个变量，并且赋值为一个函数，问题：为什么我的值不对啊？？？？？？？？？？？？？？？？？？？
+    var d=parseInt(0123);   //声明一个变量，并且赋值为一个函数
+    console.log(c,10);//      83   10        float忽略0，问题：跟教程得到的结果是不正确啊？？？？？？哪里的问题？？？？？？？？？？
+    console.log(d,10);//      83    10       int不会忽略0 问题：跟教程得到的结果是不正确啊？？？？？？哪里的问题？？？？？？？？？？
+
+
+   var a=parseFloat(12.34);  //声明一个变量，并且赋值为一个函数  我的软件写12.34px是错误的？？？？？？？？
+   var b=parseInt(12.34); //声明一个变量，并且赋值为一个函数
+   console.log(a);//      12.34
+   console.log(b);//      12
+
+
+   var age=20;           //
+   agestr=age.toString();  //
+   console.log(agestr);//     20       打印bottomval的值，
+   console.log(String(age));//   20         打印bottomval的值，
+
+   var age1=20;
+   console.log(Boolean(age1));//   true
+
+</script>
+
+
+</body>
+</html>

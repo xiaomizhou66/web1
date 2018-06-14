@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作符</title>
+</head>
+<body>
+
+<script>
+    var a = 10;
+    var b = "3";
+    var c = "xiaomi";
+    console.log(a * b);  //30         在这里 数字 * 数字字符 ，它把 数字字符 换成 数字，来跟数字相乘！！！！！！！！！！ 问题:为啥？？？
+    console.log(a * c);  //NaN
+
+    console.log(a);//10
+    d = ++a + b;                      //返回a+1的值来跟b相加    ，赋值给d,  这里b是"3"
+    console.log(a);//11
+    console.log(d);//113              在这里 数字+ 数字字符  ，它把 数字 换成 数字字符，来跟字符相连接！！！！！ 问题？为啥在这是连接。
+                                      // 因为算数运算符中+ 还可以表示链接的作用，只要有匀运算中的其中一个是字符，那么就会被当做是字符之间的连接。
+    console.log(a-b);// 11-3=8        在这里 数字- 数字字符  ，它把 数字字符 换成 数字，来跟数字相减！！！！！！！！！！ 问题:为啥？？？
+    console.log(b+c);// 3xiaomi        在这里是字符与字符相连接
+
+
+
+/*    下面是两种递增写法的比较*/
+    var number1 = 10;
+    var number2 = 3;
+    console.log(number1);//10
+    number3 = ++number1+ number2;    //++写在前面，返回number1+1值   来跟number2   相加   得到11+3=14
+    console.log(number1);//11
+    console.log(number3);//14
+
+    var num1 = 10;
+    var num2 = 3;
+    console.log(num1);//10
+    num3 = num1++ + num2;         //++写在后面，先返回num1值，  来跟num2   相加   得到10+3=13    这里没有二次返回所以并没有用到num1+1 值
+    console.log(num1);//11
+    //    console.log(num3);//13
+
+
+
+
+    var x=5, y="5",z=10;
+    console.log(x==y);// true     只比较x y的值是否相等，            所以相等为真
+    console.log(x===y);// false    比较x y 的值相等，但是类型不一样，所以相等为假
+    console.log(x!=y);//  false    比较x y的值是相等的，             所不等为假
+    console.log(x!==y);// true     比较值相等，类型不等，            所以不等为  真
+    console.log(y!=z);// true
+    console.log(y!==z);// true
+
+    console.log(null==undefined);// true
+    console.log(null===undefined);// false
+
+  /*  var soce=100;
+    var result=soce>60?"及格":"不及格";
+    console.log(result);// 及格*/
+
+    var soce=65;
+    var result=soce>80?"优秀":soce>60?"良好":"不及格";
+    console.log(result);// 及格
+
+
+    var xi =20;
+    var a1=20,a2=30,a3=40;
+    var mi="hello";
+    console.log(a1<a2  &&  a2<a3); //true   两个都是布尔类型的，最终返回布尔类型
+    console.log(mi   &&  a1<a2); //true   第一个不是布尔类型，第二个是布尔类型，  返回第二个的 布尔值 true
+    console.log(mi   && a1>a2); //false  第一个不是布尔类型，第二个是布尔类型，  返回第二个的 布尔值 false
+    console.log(a1>a2   && mi); //false  第一个不是布尔类型，第二个是布尔类型，  返回第二个的 布尔值 false
+    console.log(a1<a2&& mi); //hello     第一个是布尔类型，  第二个不是布尔类型，返回第二个的 值
+    console.log(xi   && mi); //hello     两个都不是布尔类型，返回第二个的 值
+    console.log(a1<a2 &&a1<a3&& a2<a3); //true   三个都是布尔类型的，最终返回布尔类型
+    console.log(mi &&a1<a3&& a2<a3); //true     三个都是布尔类型的，最终返回布尔类型
+    console.log(a1<a2 &&a1<a3&& mi); //hello    第三个都是布尔类型的，返回第三个的值
+    console.log(mi &&a1<a3&& xi); //20
+    console.log( 0 &&a1<a3&& xi); //0
+    console.log( null &&a1<a3&& xi); //null
+    console.log( undefined &&a1<a3&& xi); //undefined
+    console.log( undefined && null && " "); //undefined
+    console.log(  null &&undefined && " "); //null
+    console.log(  " " && null &&undefined); //null
+    console.log(  " " && undefined); //undefined
+    console.log(null && 0<a3&& xi); //null
+    console.log( xi&& 0 &&null ); //0
+    console.log( 0&&  " " ); //0
+    console.log(  " " && 1); //1
+    console.log(  "" && 1); //      这样就是什么都没有看到
+    console.log( xi&& xi==mi &&null ); //false
+    console.log( xi&& xi*mi &&null ); //NaN
+
+   /* 上面总结就是  逻辑与  返回的值
+       " " ,空格字符串          为真值
+       "" , 空字符串            为假值
+       0，                      为假值
+       null，                   为假值
+       undefined，              为假值
+       NaN ，                   为假值
+       设计一个逻辑与操作有n个操作数
+       逻辑与就是从左往右看每个操作数，只要遇到为false的操作数，就根据它的类型来返回值，为布尔类型就返回false，不是布尔类型就返回它相应的假值。
+       如果前面的n-1个操作数都是真的，那么就看最后一个了，最后一个位布尔类型就返回 true或 false，如果不是布尔类型就返回它的值。
+*/
+
+
+    var t1=10,t2=20,t3=30,num="10",name="mi";
+    console.log( 1  || " "); //    1   这样就是什么都没有看到
+    console.log( t1 ||  " "); //   10    这样就是什么都没有看到
+    console.log( num ||  " "); //  10     这样就是什么都没有看到
+    console.log( 0 ||  " "); //          这样就是什么都没有看到
+    console.log( null ||  " "); //      这样就是什么都没有看到
+    console.log( null ||  t3==num ); //   false   这样就是什么都没有看到
+    console.log( null ||  t3 ); //  30   这样就是什么都没有看到
+    console.log( null ||  t1==num ); //   false   这样就是什么都没有看到
+    console.log( null ||  0 ); //   false   这样就是什么都没有看到
+  /* 设计一个逻辑与操作有n个操作数
+       逻辑非就是从左往右看每个操作数，只要遇到为true的操作数，就根据它的类型来返回值，为布尔类型就返回true，不是布尔类型就返回它相应的值。
+       如果前面的n-1个操作数都是假的，那么就看最后一个了，最后一个位布尔类型就返回 true或 false，如果不是布尔类型就返回它的值。
+*/
+
+/*    逻辑非，就是判断这个数  是否 不是 真值！*/
+    console.log( !1); //    false   这样就是什么都没有看到
+    console.log( !" "); //  false    这样就是什么都没有看到
+    console.log( !""); //   true     这样就是什么都没有看到
+    console.log( !0); //    true        这样就是什么都没有看到
+    console.log( !null); // true        这样就是什么都没有看到
+    console.log( ! t1==num); // false        这样就是什么都没有看到
+
+
+
+</script>
+
+</body>
+</html>
