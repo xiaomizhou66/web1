@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html-表单</title>
+</head>
+<body>
+
+<!--网页结构布局，
+         页头，主体，页脚，
+         从上到下，从外 到里，
+      -->
+
+
+</body>
+</html>
+
+        <!--  、表单：
+       1、 表单应用场景
+            一些网页需要注册，登录，信息反馈，等等
+            填写信息就是表单的应用，表单本身是不可见的，我们看到的是表单的元素，就是用来收集用户信息传送给服务器，形成一个交互的。
+
+            当用户访问带有表单form的页面，填写信息提交之后。浏览器将用户在表单中填写的 数据  进行打包  发送给服务器，服务器接收数据，
+            转由后台程序处理数据，服务器再根据后台程序给用户端相应的反应。
+
+      2、表单语法
+          <form>
+               表单元素
+          </form>
+
+
+      3、表单元素
+          文本域：单行文本域
+          单选框
+          复选框
+          按钮：提交按钮，重置按钮 ，图像按钮等等
+          列表
+          等等
+
+      4、form表单中用到的标签，用来输入表单元素的。
+           4.1 <input/> 表单输入标签                              半闭口标签
+
+           4.2<selcet> </selcet> 菜单和列表标签
+            <option> </option> 菜单和列表项目标签
+            <optgroup></optgroup>菜单和列表分组标签
+
+           4.3 <textarea></textarea> 文本域标签：多行
+
+
+            4.1 <input/> 标签
+                它可以添加很多表单元素，通过type属性来绝对添加的表单元素是什么类型的。
+
+               语法：
+                 < form>
+                     标签：<input type="类型属性"    name="名称"    placeholder="提示信息"   value="初始值"。。。。。/>    半闭标签
+                 </form>
+
+              <input/> 标签内的属性
+                   ① 标签：是设计者要显示给用户的信息，用来表明后面的input里面要输入的是什么东西。标签页可以没有。
+                   ② 类型属性
+                      文本  type="text"      密码    type="password"      文件type="file"
+                      单选框type="radio"     复选框  type="checkbox"
+                      按钮  type="button"    提交按钮type="submit"       重置按钮type="reset"
+                      隐藏域type="hidden"    图像域  type="image"
+                      邮件域type="email"    等等
+                   ③ name 属性 ，设计者取名
+                    问题：这个name是干嘛的，name值是设计者取名的,多行用一个name名字他们就是同级关系，只能勾选一个内容提交，
+                    就像是单选框的各行name值要取名一样的，复选框各行的name值不能一样。
+                   ④placeholder属性，用来提示用户这里可以输入什么东西，跟标签的性质一样。
+                   ⑤value="传输值"， 填写好表单之后点击提交表单，相应的value值会传递给服务器
+
+                   ⑥举例应用：
+                        <input type="text"  name="username"  placeholder=""  value="" size=""  maxlength=""/>
+                        size,指定文本框宽度，可以显示部分，    maxlength，最大可输入长度
+
+                         User name:  <input type="text"  name="username" />             文本域：单行文本域
+                         First name: <input type="text" name="fname"/>
+                         Last name: <input type="text" name="lname" />
+
+                         Password: <input type="password" name="password" />           密码域
+
+                         Select images: <input type="file" name="img" multiple/>      文件域，   multiple，可以选择多个文件
+
+
+                           男 <input type="radio" name="sex" value="man">
+                           女 <input type="radio" name="sex" value="female">
+                           保密<input type="radio" name="sex" value="secret" checked>     checked:表示预选值，用户选择的情况就默认选择这个选项
+
+
+                           爱好：
+                           唱歌<input type="checkbox" name="hobby1" value="sing">
+                           跳舞<input type="checkbox" name="hobby2" value="dance">
+                           弹琴<input type="checkbox" name="hobby3" value="piano" checked>     checked:表示预选值，用户选择的情况就默认有选择这个选项
+
+                      复选框的name值是不是也可以取一样的值？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+
+                            <input type="button "  name="button " value=" ">
+                            <input type="submit"  name="submit "   value="submit">
+                            <input type=" reset "  name=" reset"   value="reset">
+                            <input type=" hidden "  name=" "   value="  ">
+
+               [图像按钮]  <input type=" image "  name="image-button "   src="">！！！！！！！！！！！！！！！！！！！！！！！！为了让按钮长得很好看
+
+                             E-mail: <input type="email" name="user_email">
+
+
+
+        -->
+
+            4.2 <!--下拉菜单与列表-->
+                    <!--
+                     <input>
+                         <select name=""  size="" multiple>                    size，显示选项的个数。multiple可以选择多个选项，但是还需要配合commet键使用，可以没有就是只能选择一个。
+                             <option value="" >--请选择--</option>             这行是用来提示的
+                             <option value="" selected>上海</option>           selected，默认选中
+                             <option value="">北京</option>                    value才是传给服务器的值，上海这些字是展示用的
+                             <option value="">厦门</option>
+                             <option value="">深圳</option>
+                        </select>
+                    </input>
+
+                    分组形式的下拉菜单
+                    <input>
+                         <select>
+                               <option value="" >--请选择--</option>
+                               <optgroup label="华东区">
+                                     <option value="">上海</option>
+                                     <option value="" selected>北京</option>
+                               </optgroup>
+                               <optgroup label="华南区">
+                                   <option value="">厦门</option>
+                                   <option value="">深圳</option>
+                                </optgroup>
+                        </select>
+                    </input>
+                    -->
+
+<!--
+
+             4.3 文本域  单行       User name:  <input type="text"  name="username">
+
+                多行
+                 <form>
+                    <textarea name="" rows=""  clos="" placeholder="请输入个人介绍"  > </textarea>
+                 </form>
+                        rows,设置多行文本域可见行数，
+                        cols，设置多行文本域可见列数
+                        placeholder，提示信息
+
+         -->
+
+
+
+
+
+<!--
+      5、表单工作原理/form的属性
+      通过表单的属性将元素中被用户输入的信息相应的value值传递给服务器
+        <from name=""  action="" method="" ......>
+            表单元素
+        </form>
+
+          name：设计者取名
+        action：url        提交表单时向何处发送表单数据，就是给后台发送，这个url是后台处理嵌套数据的文件     eg：actio.php     php是一个后台语言
+        method:get ; post  ; 设置表单以什么方式发送到指定页面，get为默认值，get会在信息暴露在action：url 中，
+                    get：使用url传递参数，对所发送信息的数量有限制，一般用于信息获取
+                    post：表单数据作为http请求的一部分，对所发送信息的数量没有限制，一般用于修改服务器上的资源
+        target：_blank ;_self;_top;_parent    设置在何处打开action：url
+        enctype：          设置 在发送表单数据之前如何对齐进行编码，设置编码的方式
+
+
+
+-->
+
+
+
+
+
+
+
+
+
