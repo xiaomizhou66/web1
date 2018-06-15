@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function函数学习</title>
+</head>
+<body>
+<script>
+
+    /* 1、   函数
+
+
+ 函数就是一个写好的，可以反复调用的代码块，可以让代码更加的简洁。也就是说我们可以把需要多次调用的语句封装在函数里面，提供后面的使用。
+    可以在任何地方，任何时候调用。
+
+
+函数语法：
+     function （函数名）（ , , , , ）{
+     执行代码；
+     }
+
+    函数的名字是设计者取，属于标识符，要符合标识符的定义规则。一般驼峰式，要约定俗成，要简洁。
+    （ , , , , ）这个括号里面都是函数的参数，参数可以是0个，也就是说可以没有参数
+    */
+    /*    function myFunc() {       //定义一个没有参数的函数myFunc
+            alert("这是一个函数");
+        }
+        myFunc();  //调用函数*/
+
+
+    /*    function add(num1, num2) {  //定义一个带有两个参数的函数add，      参数也是标识符，取名要按照规则
+            var sum = num1 + num2;
+            alert(num1 + "与" + num2 + "的和是" + sum); //弹出框，要知道这个字符串连接，不是简答的数学相加
+        }
+
+        add(5, 3);  //8     调用函数add
+        add(55, 33);  //88  调用函数add*/
+
+
+
+    /*   /!* 函数的返回值，*!/
+        function add(num1, num2) {  //定义一个带有两个参数的函数add，      参数也是标识符，取名要按照规则
+            var sum = num1 + num2;
+            return sum;
+        }
+        alert(add(5, 3));  //               调用函数add,在弹窗框显示结果
+        document.write(add(55, 33));  //88  调用函数add，在页面显示结果
+        console.log(add(-1,-1));            //调用函数add，在控制台输出结果
+        var s=add(2,3);                    //调用函数add，赋值给s
+        document.write(s);  //5            调用函数add，在页面显示结果*/
+
+
+    /*    //如果输入的是数字Juin返回2的倍数值，不是数字就不做处理
+        function myFunc(arg) {
+            if(isNaN(arg)){    //如果arg是NaN，也就是arg不是number，那就直接是return，没有对象
+                return;       //不要这样写吧，这样写最后会得到undefined，不明不白的。
+            }
+          return arg*2  ;
+        }
+        document.write(myFunc("abc"));  // undefined      不是number，直接return，上面没有写返回什么，那就是什么都没有，就是没有定义
+        document.rite(myFunc(5));     //   10
+
+    /!*    说明：任何函数都可以用return语句，后面跟着的值就是返回值。
+               执行了return之后，函数会停止并立即退出，
+               return可以不带返回值，用于提前停止函数又不需要返回值的情况*!/
+    //但是上面输出undefined，这样真的好么？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    问题：上面是自己写的，视频是这样的，两个return不需要分开区域么？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+        function myFunc(arg) {
+            if(isNaN(arg))  return;   //如果arg是NaN，也就是arg不是number，那就直接是return，没有对象。  //不要这样写吧，这样写最后会得到undefined，不明不白的？？
+            return arg*2  ;
+        }
+        document.write(myFunc("abc"));  // undefined      不是number，直接return，上面没有写返回什么，那就是什么都没有，就是没有定义
+        document.rite(myFunc(5));     //   10
+
+        */
+
+
+
+
+    /*    2、函数的参数   arguments
+          EMCAScript 中的参数，在内部用一个数组来表示，          EMCAScript 与JavaScript的关系？？？？？？？？
+          在函数体内通arguments对象来访问这个数组参数，？？？？？？？？？？？？？？？？？？？？？？？什么鬼意思
+         说明：
+         ①arguments对象只是语数组类似，并不是数组.数组的一些方法它是不能够使用的。
+         ②可以用arggments[n]索引到它的每一个元素，n为从0开始的整数
+         ③可以用  length来确定传入的参数个数
+     */
+
+
+    /*    function myFunc(num1, num2) {  //定义一个带有两个参数的函数add，      参数也是标识符，取名要按照规则
+            //arguments这个类似数组的东西,来管理我们的参数
+        }
+        myFunc(10);
+        document.write(num2);  //undefined    在调用函数的时候我们只给了一个参数，那么它对应的是给到num1，num2是没有值的*/
+
+
+    /*
+        function myFunc() {  //定义一个带有两个参数的函数add，      参数也是标识符，取名要按照规则
+            //arguments这个类似数组的东西（切片）来管理我们的参数
+            document.write(arguments.length); //2             arguments.length  用来获取传递的参数的个数
+            document.write(arguments[0]); //10               arguments[n]      用来获取传递的参数值
+            document.write(arguments[2]); //undefined         arguments[n]      用来获取传递的参数值，没有传入第三个参数，多以是没有定义
+        }
+        myFunc(10, 2);
+    */
+
+
+    /*        function add(num1, num2) {  //
+               //arguments这个类似数组的东西,来管理我们的参数
+                arguments[0]=50;    //   arguments[0],通过索引改变了我们的值，但是也不一定会成功的，在js中存在严格模式，
+                                    //在严格模式下，即使我们用这个索引的办法修改值，但是它的值依然不会被修改，就是改不动它，这里是非严格模式所以得到52，
+                                    //否则严格模式就是12了
+                return num1+num2;
+           }
+            sum=add(10,2);
+           document.write(sum);  //52*/
+
+
+
+
+
+
+    /*   求任意一组数的平均值，
+              用arguments来做。
+    */
+    /*   function getAvg() {
+           for (var i = 0; i < arguments.length; i++) {   //把条件转化为值写入，可以避免循环中去计算，节省计算机的运算。*!/
+               var sum = 0; //sum 的初始化不要放在循环，不然每次循环又把sum=0,了！！！！！！！！！！！！！！！！！！！！！！！！！！
+               sum += arguments[i];
+               var Avg = sum / arguments.length;  /Avg也不要放在循环中！！！！这样会每次循环又是新值！！！，只要累计sum值就好
+           }
+           return Avg;
+       }
+       Avg=getAvg(5, 5, 5, 5);
+       document.write(Avg);
+   */
+
+    /* //上面的语句错在哪里了，怎么都不对？？？？？
+        1、初始化的sum值放在循环里面，每次循环J就又把sum初始化为0了！！！！！！！！
+        2、avg放在循环中，会得到每此循环的平均值，
+        在这里只需要在循环中累计sum值，然后再外面计算平均值，
+        而且i的条件值，不要是一个需要计算的公式，要给出值，比较浪费计算机的计算！！！
+        */
+
+    /*   求任意一组数的平均值，
+             用arguments来做。
+   */
+    function getAvg() {
+        var sum = 0, len = arguments.length, avg,i;
+        for ( i = 0; i < len; i++) {   //把条件转化为值写入，可以避免循环中去计算，节省计算机的运算。*!/
+            sum += arguments[i];
+        }
+        avg = sum / len;
+        return avg;
+        // 可以直接写return  sum/len;
+    }
+    document.write(getAvg(5, 5, 6, 5));
+    //avg=getAvg(5, 5, 5, 5);
+    //document.write(avg);
+
+
+</script>
+</body>
+</html>

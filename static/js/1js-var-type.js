@@ -89,9 +89,10 @@ function displayDate(){
                                             2.提供第二个参数，转换时使用的基数（多少进制），
                                                    var bottomval="20px";           // 经常用于获取一个盒子的值，然后去改变值
                                                    bottomval=parseInt(bottomval);  //
-                                                   console.log(parseInt(bottomval));//      20      打印bottomval的值，
+                                                   console.log(parseInt(bottomval));//       20      打印bottomval的值，
                                                    console.log(parseInt(bottomval,16));//    32       以16进制打印bottom值，
                                                    console.log(bottomval,16);//              20  32   打印bottomval的值， 以16进制打印bottom值，
+
 
                                  ③ parseFloat(str); 把字符串转换为浮点数
                                                  从第一个字符开始解析每个字符，直到遇见一个无效的浮点数字符为止
@@ -104,10 +105,13 @@ function displayDate(){
             *                               console.log(a);//      12.34
                                             console.log(b);//      12
 
-                                            var c=parseFloat(0123);   //声明一个变量，并且赋值为一个函数
-            *                               var d=parseInt(0123);   //声明一个变量，并且赋值为一个函数
-            *                               console.log(c);//      123           float忽略0
-                                            console.log(d);//      0123          int不会忽略0
+
+
+                                            0123在js中是当做字符串类型的？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+                                            var c=parseFloat("0123");   //声明一个变量，并且赋值为一个函数
+            *                               var d=parseInt("0123");   //声明一个变量，并且赋值为一个函数
+            *                               console.log(c);//      123          第一个数字0无效的话就会被忽略
+                                            console.log(d);//      123          第一个数字0无效的话就会被忽略
     *
     *
             *   5.4   字符串：
