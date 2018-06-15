@@ -146,15 +146,15 @@
       5.2  ||  逻辑或
               【 只要一个为真就为真，都为假才为假，但是这个假不一定是false值，真也不一定是true】
                  var t1=10,t2=20,t3=30,num="10",name="mi";
-            console.log( 1  || " "); //    1   这样就是什么都没有看到
-            console.log( t1 ||  " "); //   10    这样就是什么都没有看到
-            console.log( num ||  " "); //  10     这样就是什么都没有看到
+            console.log( 1  || " "); //    1
+            console.log( t1 ||  " "); //   10
+            console.log( num ||  " "); //  10
             console.log( 0 ||  " "); //          这样就是什么都没有看到
             console.log( null ||  " "); //      这样就是什么都没有看到
-            console.log( null ||  t3==num ); //   false   这样就是什么都没有看到
-            console.log( null ||  t3 ); //  30   这样就是什么都没有看到
-            console.log( null ||  t1==num ); //   false   这样就是什么都没有看到
-            console.log( null ||  0 ); //   false   这样就是什么都没有看到
+            console.log( null ||  t3==num ); //   false
+            console.log( null ||  t3 ); //  30
+            console.log( null ||  t1==num ); //   false
+            console.log( null ||  0 ); //   false
           /* 设计一个逻辑与操作有n个操作数
                逻辑或就是从左往右看每个操作数，只要遇到为true的操作数，就根据它的类型来返回值，为布尔类型就返回true，不是布尔类型就返回它相应的值。
                如果前面的n-1个操作数都是假的，那么就看最后一个了，最后一个位布尔类型就返回 true或 false，如果不是布尔类型就返回它的值。
@@ -163,12 +163,12 @@
 /*
       5.3  ！  逻辑非  ！！！！这个终于正常 ！！！！！！！！！！不管是判断什么类型的值，都是返回布尔值。
            逻辑非，就是判断这个数  是否 不是 真值！
-            console.log( !1); //    false   这样就是什么都没有看到
-            console.log( !" "); //  false    这样就是什么都没有看到
-            console.log( !""); //   true     这样就是什么都没有看到
-            console.log( !0); //    true        这样就是什么都没有看到
-            console.log( !null); // true        这样就是什么都没有看到
-            console.log( ! t1==num); // false        这样就是什么都没有看到
-
+            console.log( !1); //    false
+            console.log( !" "); //  false
+            console.log( !""); //   true
+            console.log( !0); //    true
+            console.log( !null); // true
+            console.log( ! t1==num); // false
+           console.log( !!1); //    true       !1 为false，再对false取反   ，！false为真    多个！！就一级级取反。
             在逻辑非中，就是判断这个数，如果的确不是真值就返回 真true，如果是真值就返回假false。
 */
