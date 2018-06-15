@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js的对象学习</title>
+</head>
+<body>
+
+<script>
+    /*js中的对象
+字符串，函数，数组，这些都是对象*/
+
+    /*    内置对象：指的是浏览器封装好的一些对象，我们可以直接调用它的属性以及方法等东西。
+        属性：这个对象的一个特性
+        方法：对象作用
+
+        四个主要的内置对象学习
+        1、数组array
+        2、字符串string
+        3、math
+        4、Date
+    */
+
+
+    /* 一、数组
+          js中的数组跟其他语言的数组是有区别的，
+          ①在同一个数组中，元素的类型可以不一样，可以是任意类型。
+          ②js中的数组的长度是动态的，可以改变的。
+          为什么要创建成为数组，就是要存储一组数据。个数肯定就是大于等于2！！！！！！！！！
+
+         //1、创建数组
+                        方法1：使用array构造函数，
+                              语法：new Array()   ,支持只写Array()，但是不建议这么偷懒，谁知道什么时候代码会发生什么错误呢
+                              ()说明：
+                                 ①如果我们预先知道这个数组需要放置的元素数量，那么会在这个括号里写上这个数量数值，
+                                 ②向Array构造函数中传递数组应该包含的项。就是把数组元素写出来，
+                         */
+
+
+                         /*创建一个保存颜色的数组
+                        var colors = new Array();  //这里表示创建一个空的数组
+                        console.log(colors); //在控制台就可以看到一个[]表示一个空的数组
+                        var colors1 = new Array(3);  //这里表示创建一个长度为3的的数组
+                        var numbers = new Array(1, 4, 6, 3);//这里表示创建一个元素为 1  4  6  3*/
+
+
+                  /*
+                     方法2：使用字面量来创建数组
+                        语法：就是在一个中括号[]
+                        面吧元素列举出来，元素之间用逗号隔开。*!/
+                        var colors2 = ["red", "yellow", "blue"];
+                        console.log(colors2); // ["red","yellow","blue"]
+                        var infos = ["1114010202", "china", 18, true, {email: "liuxiaomi0724@163.com"}]
+                        console.log(infos); //["1114010202", "china", 18, true, {…}]    是{…}，不是视频说的object啊？？？？？*/
+
+
+/*          //2、  读取元素：通过索引来读取元素
+                        var infos = ["1114010202", "china", 18, true, {email: "liuxiaomi0724@163.com"}]
+                        console.log(infos); //["1114010202", "china", 18, true, {…}]    是{…}，不是视频说的object啊？？？？？
+                        console.log(infos[0]);  // "1114010202"
+                        console.log(infos[5]);  // undefined
+
+           //3、获取数组长度;语法：Array.length   返回number
+                        console.log(infos.length) ;// 5
+                         // 说明：通过设置数组的length可以移除数组的末尾项（元素），或者向数组中添加新的项
+                        infos.length=3;  //把infos数组的长度更新为3，那么它就会把第4个以后后面的想都移除。
+                        console.log(infos);//["1114010202", "china", 18]  得到了一个新的数组了
+                        infos.length=5;  //把infos数组的长度更新为5，往里面添加2个项目，但是是回不到之前的，添加的只是空项，没有值的项
+                        console.log(infos);//["1114010202", "china", 18, empty × 2]
+                         //当我们把一个值放在当前数组大小的位置上时，会重新计算数组的长度，长度值与索引页相应的+1，，，，这句话屁用，复杂化
+                         infos[99]=2;  // 把2赋值给索引为99的数组元素，数组的长度就更新了，
+                        console.log(infos.length);//100    索引到99了，就有100个元素了，*/
+
+
+ /*         //4、数组的遍历:拿到数组中的每个元素的值
+                        // 用for循环来遍历已经知道个数的数组
+                        var str=["a","b","c","d","e"];
+                        var len=str.length;
+                        for(var i=0;i<len;i++){
+                            console.log(str[i]);
+                        }*/
+
+/*             //5、数组的方法：栈方法
+                    ①、push()  给数组尾部添加元素 ，返回新的长度值number               //翻译：push，推动，增加，对什么施加压力
+                                 语法： arrayObject.push(元素1，元素2，，，，，元素n)！！！！！！就是   数组名.push（被添加上去的元素），说那么复杂干嘛！！！
+                                 功能： 把它的参数有顺序的添加到arrayObject的尾部
+                                 返回值：把指定的值(元素1，元素2，，，，，元素n)添加到数组之后的新的长度值，number
+                    ②、unshift() 给数组前端添加元素,返回新的长度值number                // 翻译：unshift 不去掉，就是往上添加
+                    ③、pop()     删除数组的最后一个元素，返回最后一个元素值，           //翻译：pop 突然提出，突然拿出来，突然出现，发出爆裂声，就是拿掉
+                                  语法：var info=colors.pop();
+                    ④、shift()// 删除数组的第一一个元素，返回第一个元素值，          // t翻译：shif去掉，改变，摆脱掉，换衣服，更衣，
+                                                                                         //       还有换挡，上档键的意思，那就是数组前端咯！！！
+ */
+/*
+                    var colors=["red","green"];
+                    var len=colors.push("blue","black");  //添加2个新元素，返回新的长度值赋值给len
+                    console.log(colors); // ["red", "green", "blue","black"]
+                    console.log(len); //  4
+                    var len1=colors.unshift("white","yellow");
+                    console.log(colors); // ["white","yellow","red", "green", "blue","black"]
+                    console.log(len1); //  6
+                    var info=colors.pop();
+                    console.log(colors); // ["white","yellow","red", "green", "blue"]
+                    console.log(info); //  black
+                    var info1=colors.shift();
+                    console.log(colors); // ["yellow","red", "green", "blue"]
+                    console.log(info1); //  white
+*/
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
