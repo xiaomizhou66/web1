@@ -80,20 +80,33 @@
                             console.log(str[i]);
                         }*/
 
-/*             //5、数组的方法：栈方法
-                    ①、push()  给数组尾部添加元素 ，返回新的长度值number               //翻译：push，推动，增加，对什么施加压力
+/*             //5、数组的方法：栈方法?????????????????????????????????????????????????????//
+                    ①、push()   给数组尾部添加元素 ，返回新的长度值number               //翻译：push，推动，增加，对什么施加压力
+                                                      也返回一个新的数组啊！！
                                  语法： arrayObject.push(元素1，元素2，，，，，元素n)！！！！！！就是   数组名.push（被添加上去的元素），说那么复杂干嘛！！！
                                  功能： 把它的参数有顺序的添加到arrayObject的尾部
                                  返回值：把指定的值(元素1，元素2，，，，，元素n)添加到数组之后的新的长度值，number
                     ②、unshift() 给数组前端添加元素,返回新的长度值number                // 翻译：unshift 不去掉，就是往上添加
+                                                     也返回一个新的数组啊
                     ③、pop()     删除数组的最后一个元素，返回最后一个元素值，           //翻译：pop 突然提出，突然拿出来，突然出现，发出爆裂声，就是拿掉
                                   语法：var info=colors.pop();
-                    ④、shift()// 删除数组的第一一个元素，返回第一个元素值，          // t翻译：shif去掉，改变，摆脱掉，换衣服，更衣，
+                    ④、shift()// 删除数组的第一一个元素，返回第一个元素值，          // 翻译：shif去掉，改变，摆脱掉，换衣服，更衣，
                                                                                          //       还有换挡，上档键的意思，那就是数组前端咯！！！
+                    ⑤、join(),把数组的所有元素放入一个字符串，返回新字符串           //翻译：join，参加，加入
+                               （）中写的是分隔符
+                    ⑥、reverse(),把数组倒序，返回新的数组                            //翻译：reverse，反转，点到，交换，推翻
+                    ⑦、sort(),   把数组按照要求排序，返回新的数组
+                                   sort比较的是字符串，不是数值，即使数组全都是数值，比较的也是字符串
+                                   ()内可以接收一个比较函数作为参数
+                    ⑧concat() ,   在一个数组后面连接数组（多个数组都行），返回一个新的数组，
+                    ⑨slice(m,n),   在一个数组中取值，返回新的数组，就是切片咯！！
+                            如果是正数从头部开始算，是负数就从尾部开始算，   取的区间都是从左往右m的位置元素到n的位置元素，不包括n的位置元素,
+                            负数的话：最后一个元素就是-1，不是0
+                            区间是开闭区间，包含索引m，但是不包含n
  */
-/*
-                    var colors=["red","green"];
-                    var len=colors.push("blue","black");  //添加2个新元素，返回新的长度值赋值给len
+
+/*                  var colors=["red","green"];
+                    var len=colors.push("blue","black");  //添加2个新元素，返回新的长度值赋值给len  ，也返回一个新的数组给colors啊！！！！！
                     console.log(colors); // ["red", "green", "blue","black"]
                     console.log(len); //  4
                     var len1=colors.unshift("white","yellow");
@@ -105,7 +118,57 @@
                     var info1=colors.shift();
                     console.log(colors); // ["yellow","red", "green", "blue"]
                     console.log(info1); //  white
-*/
+                    var str=colors.join();//把colors数组放到一个字符串中
+                    console.log(str);//yellow,red,green,blue         得到的已经是字符串了，这个字符串还带着逗号！！因为join()里面没有参数
+                    var str1=colors.join("");//把colors数组放到一个字符串中,元素之间""连接
+                    console.log(str1);//yellowredgreenblue
+                    var str1=colors.join("-");//把colors数组放到一个字符串中,元素之间"-"连接
+                    console.log(str1);//yellow-red-green-blue
+                    console.log(colors.reverse());//["blue", "green", "red", "yellow"]
+                    console.log(colors.sort());//["blue", "green", "red", "yellow"]      //字符串排序是根据英文首字母
+                    var numbers=[5,1,7,80,21,-2,-5];
+                    console.log(numbers.sort());//[-2, -5, 1, 21, 5, 7, 80]       //数字也是按照字符排序的，所以是看首个字符（数字）
+/!*                  数组排序都是按照字符来进行的，数值也会被当做是字符串，
+                    字母的排序根据元素的首字母，
+                    数值的排序也是根据数值的最高位的值来排序，位数不同的值也会排在一个那么这个排序就错误了，就要在（）里面写上一个可以比较的函数来辅助了*!/
+                    console.log(numbers.sort(function (a,b) {return a-b;  }));  // [-5, -2, 1, 5, 7, 21, 80]
+                    console.log(numbers.sort(function (a,b) {return b-a;  }));  // [80, 21, 7, 5, 1, -2, -5]
+                                /!*     function (a,b) {
+                                            return a-b;
+                                        }
+                                        这个匿名函数就是用来辅助排序的，返回值a-b是正序排列，从小到大排序   ？？？？？？？什么鬼意思啊？？？？？
+                                                                        返回值b-a是逆序排序，从大大小*!/
+
+                    console.log(numbers.concat(colors));  // [80, 21, 7, 5, 1, -2, -5, "blue", "green", "red", "yellow"]    把colors添加给numbers
+                                   /!* 注意：
+                                      上面使用了排序功能已经把数组的改变了！！！！！！！！！！！！！，除join不会改变原来的数组，其他的方法都会改变
+                                      而在这里，这个concat方法也没有改变number元素*!/
+                    console.log(numbers.slice(0,1));  //    [80]
+                    console.log(numbers.slice(-5,5));  //   [7, 5, 1]
+                           /!* numbers=[80, 21, 7, 5, 1, -2, -5]
+                              m=-5，就是从右边算起第五位，就是7
+                              n=5从左边算起，就是-2，但是不会包括-2
+                              所以就是[7, 5, 1]
+                            *!/
+
+                    console.log(typeof(numbers.slice(0,1)));  //   object，切片*/
+    //？？？？问题！！！！为什么有的时候colors数组被改变有的时候没有被改变？？？？？？？？什么鬼情况？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+
+
+    //面试题：给一个数组a=[1,"yes",3]，一个空数组b，把a数组拷贝到b数组，方法越多越好
+    var a =[1,"yes",3],b=[],b1=[],b2=[],b3=[],b4=[],b5=[],b6=[];
+    b=a.slice();
+    console.log(b);//[1,"yes",3],   切片不写mn值就是全拷贝了咯，
+    console.log(b1.concat(a));       //把a 加到b后面
+   // console.log(a.slice(0,3)+a.pop());       //这个不行！！！切片数组+字符串，得到的是字符串,
+                                            // 问题，可以把字符串直接转化为数组额？，不就是用push在后面增加么，这里用unshift也行，因为b是空的数组啊
+   //但是这个切片的方法有点烂，可以把数组的元素遍历出来，然后添加到b中去，就可以得到新的b数组了，
+   var len=a.length;
+   for(var i=0;i<len;i++){
+       b2.push(a[i]);//把a中的元素给b，
+   }
+   console.log(b2);
+
 
 
 
