@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string 的方法学习</title>
+</head>
+<body>
+
+<script>
+    //stringd 的方法：
+    //①string[i] 获取字符串的字符，
+            var string="liuxiaomi";
+            console.log(string[2]);//u  ,但是这个有兼容问题，有的低版本的不能用这个把那，ie7之前的就不能使用，用到话得到的值是undefined
+            console.log(string[15]);//undefined     索引越界不可以这样用吧？？？
+
+    //②string.charAt(i)   获取字符串的字符
+            // 早期版本用下面的方法来索引字符。
+            var string="liuxiaomi";
+            console.log(string.charAt(2));//u
+            console.log(string.charAt(15));//    打印空字符串，我们看不到的值
+
+    //③string.charCodeAt(i)早期版本用来返回字符的编码值，获取字符的编码
+            var string="liuxiaomi";
+            console.log(string.charCodeAt(2));//117
+            console.log(string.charCodeAt(15));// NaN   空字符串对应的编码值是NaN
+
+    //④indexOf("",i)      获取子字符串的下标 number
+    // 从一个字符串中搜索子字符串，返回子字符串的第一个字符的位置number，下标number，没有找到就返回-1   从左往右找
+             var string="liuxiaomi";
+             console.log(string.indexOf("a",0));//5    value值不要忘记加引号！！！！！
+
+    //⑤lastIndexOf("",i)   获取子字符串的下标 number
+    // 从一个字符串中搜索子字符串，返回子字符串的第一个字符的位置number，下标number，没有找到就返回-1   从右往左找
+            var string="liumeixiaomi";
+            console.log(string.lastIndexOf("a",0));//-1    value值不要忘记加引号！！！！！从下标为0 的往左找没有字符a了
+            console.log(string.lastIndexOf("a",4));//-1   value值不要忘记加引号！！！！！  从下边为4的往左找没有a了
+            console.log(string.lastIndexOf("a",7));//5   value值不要忘记加引号！！！！！
+            console.log(string.lastIndexOf("mei",10));//3   value值不要忘记加引号！！！！！
+
+             //③④也有兼容性问题，如果出现错误了的话，要学会自己封装函数，这个在数组中已经学习了，这个写了。
+
+    //⑥slice(m,n)    获取子字符串
+    // 从字符串中获取子字符串，不会改变原来的字符串，半封闭区间，区间只会是从左往右，索引可以是负的。
+            var string="liumeixiaomi";
+            console.log(string.slice());// liumeixiaomi
+            console.log(string.slice(0,0));//     空字符串，0-0，就是没有区间，第一个字符串也不包括
+            console.log(string.slice(6));// xiaomi
+            console.log(string.slice(-5,-7));//    空字符串，负数是从最后往左，最后一个字符是-1，-5是i，-7是i，不会包括-7的，
+                                            //但是我们的区间只会从左往右计算。-5，-7不构成区间，没有获取到字符
+            console.log(string.slice(-5,-3));//   ia                    ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+            console.log(string.slice(6,2));//     空字符串              ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+    //⑦substring(m,n)     获取子字符串
+    // 从字符串中获取子字符串，不会改变原来的字符串，半封闭区间， 索引可以是负的，但是会自动修正为0，也就是总左边开始
+            var string="liumeixiaomi";
+            console.log(string.substring());// liumeixiaomi    省略索引就是全获取
+            console.log(string.substring(0,0));//     空字符串，0-0，就是没有区间，第一个字符串也不包括
+            console.log(string.substring(6));// xiaomi
+            console.log(string.substring(-5,-7));//   空字符串，索引为0都自动转为0，等价于string.substring(0,0)
+
+            console.log(string.substring(-5,-3));//   空字符串，索引为0都自动转为0，等价于string.substring(0,0)        这个与是slice就可以看出区别了！！！
+            console.log(string.substring(6,2));//umei           索引m，n中，n可以是小于m的值，
+                                                // substring会自动从mn中挑选小的值作为开始，大的结束。与slice的区别！！！ 这里相当于string.substring(2,6)
+            console.log(string.substring(2,-5));//li    相当于string.substring(0,2)
+
+
+      //⑧substr(m,len)  获取截取子字符串，
+             //m为负值时，从右边开始，算位数。
+             //len表示截取的个数，为负数时/0时，返回空字符串
+              var string="liumeixiaomi";
+             console.log(string.substr());// liumeixiaomi    省略索引就是全获取
+             console.log(string.substr(6));// xiaomi    省略索引就是从索引为6的开始全获取
+             console.log(string.substr(6,0));//   空字符串，没有获取
+             console.log(string.substr(6,-6));//   空字符串，没有获取
+             console.log(string.substr(-6,2));//xi   空字符串，没有获取
+
+              //字符串方法的综合应用
+              //编写一个js文件，用于获取参数的后缀名。例如，abc.txt，返回.txt
+                 function getHouzui(string) {
+                      var i=string.indexOf(".",0);
+                      if(i===-1){
+                          return "不是一个文件名";
+                      }
+                      return string.slice(i);
+                  }
+                 var string="js.html";
+                 console.log(getHouzui(string)) ;
+
+
+                //用lastIndexOf 比较好，因为文件可能我们给它一个URL地址，所以还是从后面查找比较好，
+                function getHouzui1(string) {
+                    len=string.length;
+                    var i=string.lastIndexOf(".",len);  //注意从右往左找的，要从最后一个字符看是查找
+                    if(i===-1){
+                        return "不是一个文件名";
+                    }
+                    return string.slice(i);
+                }
+                var url="D:/xiaomi.com/static/css/js/js.html";   //这样的字符串用从左到右的办法就错了，
+                console.log(getHouzui1(string)) ;
+
+
+
+       //⑨方法：split("分隔符")   把字符串分割成字符串数组    返回值：数组
+                 var string="liumei,xiaomi";
+                 var stringtoarray=string.split(",");   // 在这里，分隔符就不是随便取的了，它要是字符串中有的符号，并且你以它来分隔字符串，以得到数组
+                 console.log(stringtoarray);//["liumei","xiaomi"]
+
+                var string1="liumei-xiaomi";
+                var stringtoarray1=string1.split("-");   // 在这里，分隔符就不是随便取的了，它要是字符串中有的符号，并且你以它来分隔字符串，以得到数组
+                console.log(stringtoarray1);//["liumei","xiaomi"]
+
+
+                var string2="2018/06/16";
+                var stringtoarray2=string2.split("/");   // 在这里，分隔符就不是随便取的了，它要是字符串中有的符号，并且你以它来分隔字符串，以得到数组
+                console.log(stringtoarray2);//["2018","06","16"]
+
+
+    //⑩方法：replace("将要被替换的子字符串","替换进去的子字符串")   返回新的string
+               var string="liumeixiaomi";
+               var string1=string.replace("mei",""); //后面一个不写的话就类似于删除某些字符
+               console.log(string1);// liuxiaomi
+               var  string2=string.replace("mei","0724");
+               console.log(string2);// liu0724xiaomi   //
+
+
+
+    //⑪toUperCase()     字符串可以是单个字符
+    //⑫ toLowerCase()
+                var string="liumei";
+                console.log(string.toUpperCase()); //LIUMEI
+                var string1="liuMei";
+                console.log(string1.toLowerCase());//liumei
+
+
+//综合实例：
+            //把一个字符串的首字符大写并且连在一个
+            //"border-left-colour"  改为borderLeftColor，驼峰           骆驼：camelback
+            function camelback(string) {
+                var arr=string.split("-"); //得到数组
+                var len=arr.length;       //获取数组长度值
+                var newstring=arr[0];     //将数组的第一个元素赋值给一个新的字符串，
+                for(var i=1;i<len;i++){  //遍历数组，第一个元素不需要遍历，因为驼峰中第一个单词是不需要首字母大写的
+                    newstring=newstring+arr[i].charAt(0).toUpperCase()+arr[i].slice(1) ;
+                    // 新的字符串等于  第一个字符串+ 首字母大写(提取后面的字符串首字母转换成大写) + 首字母后面的字符串的东西
+                }
+                return newstring;
+            }
+            var string="border-left-colour";
+            var newstring=camelback(string);
+            console.log(newstring);
+
+    // ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳/
+
+
+</script>
+
+</body>
+</html>
