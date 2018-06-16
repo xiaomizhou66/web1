@@ -15,7 +15,8 @@
         方法：对象作用
 
         四个主要的内置对象学习
-        1、数组array
+        1、数组array,切片slice
+
         2、字符串string
         3、math
         4、Date
@@ -100,12 +101,30 @@
                                    ()内可以接收一个比较函数作为参数
                     ⑧concat() ,   在一个数组后面连接数组（多个数组都行），返回一个新的数组，
                     ⑨slice(m,n),   在一个数组中取值，返回新的数组，就是切片咯！！
-                            如果是正数从头部开始算，是负数就从尾部开始算，   取的区间都是从左往右m的位置元素到n的位置元素，不包括n的位置元素,
-                            负数的话：最后一个元素就是-1，不是0
-                            区间是开闭区间，包含索引m，但是不包含n
+                                    如果是正数从头部开始算，是负数就从尾部开始算，   取的区间都是从左往右m的位置元素到n的位置元素，不包括n的位置元素,
+                                    负数的话：最后一个元素就是-1，不是0
+                                    区间是开闭区间，包含索引m，但是不包含n！！！！！！！！！！！！！
+                                    参数为负值，则该参数是从数组的末尾索引开始算起的（-1指的是数组中倒数第一个元素）；
+                                    参数只有一个时-——slice（2），表示的是从下标为2位置的元素提取到末尾；
+                                    参数是0时，——slice()，表示的是全部提取，相当于克隆一个新的数组，克隆后两数组之间进行各自的操作，互不影响；
+                     ⑩splice(m,n,要插入的元素item1...itemn)    从m索引这个元素开始，删除n个元素，并且带上要插入的元素，（）
+                                                   所以，n=0时表示不删除元素，
+                                                   没有item的时候就是不插入元素
+                                                    在数组中某处插入值，返回新的数组（被删除的元素组成的新数组），并且原数组会被改变
+                                                    替换数组的某个元素，返回新的数组（被删除/替换的元素组成的新数组），并且原数组会被改变
+                     ⑪ indexOf(要查找的元素searchvalue，开始查找的索引startindex) ，  从头开始查找，从左往右
+                                                 从starindex开始查找元素的，第一次找到元素的下标
+                                                返回下标值，不会改变原数组
+
+                     ⑫lastIndexOf(要查找的元素searchvalue，开始查找的索引startindex) ，从尾部开始查找，从右往左
+
+                    说明：方法⑪⑫有兼容问题，
+
  */
 
-/*                  var colors=["red","green"];
+/*
+                    //方法：① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
+                    var colors=["red","green"];
                     var len=colors.push("blue","black");  //添加2个新元素，返回新的长度值赋值给len  ，也返回一个新的数组给colors啊！！！！！
                     console.log(colors); // ["red", "green", "blue","black"]
                     console.log(len); //  4
@@ -155,22 +174,157 @@
     //？？？？问题！！！！为什么有的时候colors数组被改变有的时候没有被改变？？？？？？？？什么鬼情况？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
 
 
-    //面试题：给一个数组a=[1,"yes",3]，一个空数组b，把a数组拷贝到b数组，方法越多越好
-    var a =[1,"yes",3],b=[],b1=[],b2=[],b3=[],b4=[],b5=[],b6=[];
-    b=a.slice();
-    console.log(b);//[1,"yes",3],   切片不写mn值就是全拷贝了咯，
-    console.log(b1.concat(a));       //把a 加到b后面
-   // console.log(a.slice(0,3)+a.pop());       //这个不行！！！切片数组+字符串，得到的是字符串,
-                                            // 问题，可以把字符串直接转化为数组额？，不就是用push在后面增加么，这里用unshift也行，因为b是空的数组啊
-   //但是这个切片的方法有点烂，可以把数组的元素遍历出来，然后添加到b中去，就可以得到新的b数组了，
-   var len=a.length;
-   for(var i=0;i<len;i++){
-       b2.push(a[i]);//把a中的元素给b，
-   }
-   console.log(b2);
 
 
 
+
+
+/*
+    //⑩splice方法
+
+    var colors=["blue", "green", "red", "yellow"];
+    console.log(colors.slice(0,8));//["blue", "green", "red", "yellow"];   不越界？？？？？
+
+    var colorssplice=colors.splice(2,0);  //colors.splice 返回一个被删除元素的数组赋值给colorssplice， 这里（2,0）没有区间，就是没有被删除掉元素，
+    console.log(colorssplice);//[]     没有被删除元素，返回的即就是一个空函数，原函数还是原状态
+    console.log(colors);//["blue", "green", "red", "yellow"]     没有被删除元素，返回的即就是一个空函数，原函数还是原状态
+   // var colorssplice1=colors.splice(-2,3);   //-2 是red，3是yellow，  3可以是变得更大， 即使数组的个数已经没有， 它没有越界啊？？？？？？？？？？？？？？
+     var colorssplice1=colors.splice(-2,4);   //-2 是red，3是yellow，
+    console.log(colorssplice1);// ["red", "yellow"]     这里是被删除的元素
+    console.log(colors);//["blue", "green"]              这里是没有被删除的元素
+
+
+    var colors1=["blue", "green", "red", "yellow"];
+    var colorssplice2=colors1.splice(2);  //colors.splice 返回一个呗删除元素的数组赋值给colorssplice， 这里（2），表示从索引2开始到尾部的所有元素删除
+    console.log(colorssplice2);//["red", "yellow"]   返回被删除的元素数组
+    console.log(colors1);//["blue", "green"]         原数组
+
+
+
+    var colors2=["blue", "green", "red", "yellow"];
+    console.log(colors2.splice(2,0,"xiaomi","zihua","xiaomizhou"));//[]    在索引2后面添加元素，0表示没有被删除元素，
+    console.log(colors2);//["blue", "green", "xiaomi", "zihua", "xiaomizhou", "red", "yellow"]    添加后原函数，
+*/
+
+
+
+
+/*
+    slice与splice的区别：
+            slice()方法用于插入、删除或者替换数组中的元素；
+            splice()方法可以提取字符串中的某个部分，并以新的字符串返回被提取的部分；
+   用法上：
+         slice()方法的参数：
+         slice(start,end)
+                    slice()方法在string对象和array对象的用法类似。
+                    对于array对象来说，slice()方法提取是从start（下标）开始算起，以end（下标）结尾的一段元素（不包括end下标的元素），然后返回新的数组，对原数组没有任何影响。
+                    参数为负值，则该参数是从数组的末尾索引开始算起的（-1指的是数组中倒数第一个元素）；
+                    参数只有一个时-——slice（2），表示的是从下标为2位置的元素提取到末尾；
+                    参数是0时，——slice()，表示的是全部提取，相当于克隆一个新的数组，克隆后两数组之间进行各自的操作，互不影响；
+
+      splice()方法：
+      splice（start,count,item）
+                    数组从start下标开始，删除count个元素，并且可以在这个位置开始添加个元素；
+                    当start,count均为0，表示在数组的最前面插入新的元素；
+                    start为负值时，则表示从数组尾部开始算起的位置（-1指的是数组中倒数第一个元素；）
+                    splice(start,count)表示从start下标开始删除count个元素；
+                    splice（start）表示删除从start下标位置开始到结尾的元素；所以splice(0)是删除所有元素，也是把这个数组的元素全都拿出去生生成一个新的数组。
+*/
+
+/*           //面试题：给一个数组a=[1,"yes",3]，一个空数组b，把a数组拷贝到b数组，方法越多越好
+           var a =[1,"yes",3],b=[],b1=[],b2=[],b3=[],b4=[],b5=[],b6=[];
+           b=a.slice();
+
+           //方法1：slice获取数组的办法
+           console.log(b);//[1,"yes",3],   切片不写mn值就是全拷贝了咯，
+
+          //方法2：concat连接数组的办法
+           console.log(b1.concat(a));       //把a 加到b后面
+          // console.log(a.slice(0,3)+a.pop());       //这个不行！！！切片数组+字符串，得到的是字符串,
+                                                   // 问题，可以把字符串直接转化为数组额？，不就是用push在后面增加么，这里用unshift也行，因为b是空的数组啊
+          //但是这个切片的方法有点烂，可以把数组的元素遍历出来，然后添加到b中去，就可以得到新的b数组了，
+
+         //方法3：for循环遍历数组的办法
+          var len=a.length;
+          for(var i=0;i<len;i++){
+              b2.push(a[i]);//把a中的元素给b，
+          }
+          console.log(b2);
+
+         //方法4：splice删除插入替换数组的办法
+         b2=a.splice(0);//把a的元素全都给b2，a中没有元素了，
+         console.log(b2);//[1,"yes",3]
+
+
+   // 当start,count均为0，表示在数组的最前面插入新的元素；
+         b3=a.splice(0,0,"1","yes","3");//
+         console.log(b3);//[]   第二个数是0个元素，所以返回的是空数组
+
+       //方法5这个也不算是办法了，
+         b4=a.splice(0,3,"1","yes","3");
+         console.log(b4);//["1", "yes", "3"]
+         console.log(a);//["1", "yes", "3"]
+ */
+
+
+/*    //方法⑪ indexOf
+    //indexOf(要查找的元素searchvalue，开始查找的索引startindex) ，从starindex开始查找元素的，第一次找到元素的下标
+   // 返回下标值，不会改变原数组
+    var colors=["blue", "green", "red", "yellow","blue", "blue", "green", "red", "yellow","green", "red", "yellow"];
+    var blueNumber=colors.indexOf("bule",0);  //bule错了，找不到是-1 没有元素返回的下标是-1！！！！！！！！！！！！
+    console.log(blueNumber);//-1
+    var blueNumber1=colors.indexOf("blue",0);  //
+    console.log(blueNumber1);// 0
+
+
+    var colors1=[ "green", "red", "yellow","blue", "blue", "green", "red", "yellow","green", "red", "yellow"];
+    var blueNumber2=colors1.indexOf("blue",0);  //
+    console.log(blueNumber2);// 3
+    var blueNumber3=colors1.indexOf("blue");  // 不写下标就是默认从第一个元素开始查找
+    console.log(blueNumber3);// 3
+    var blueNumber4=colors1.indexOf("blue",5);  //
+    console.log(blueNumber4);// -1         没有元素返回的下标是-1！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
+
+
+/*    //方法 ⑫lastIndexOf(）
+    var colors=["blue", "green", "red", "yellow","blue", "blue", "green", "red", "yellow","green", "red", "yellow"];
+    var blueNumber1=colors.lastIndexOf("blue",0);  //
+    console.log(blueNumber1);// 0                    从索引为0的元素从右往左查找就是第一个元素，下标为0
+    var blueNumber2=colors.lastIndexOf("blue",6);  // 从索引为6的元素green，从右往左查找blue，下标为5
+    console.log(blueNumber2);// 5
+
+    var blueNumber3=colors.indexOf("red",6);  //   从索引为6的元素green，从左往左查找red，下标为7
+    console.log(blueNumber3);//7
+    var blueNumber4=colors.lastIndexOf("red",6);  // 从索引为6的元素green，从右往左查找red，下标为2
+    console.log(blueNumber4);// 2*/
+
+
+
+    // 说明：方法⑪⑫有兼容问题，
+    //如何去使得低版本的浏览器也可以使用这个方法，那就用封装的办法。
+    //以下：封装一个方法，来实现indexOf的功能
+
+    function ArrayIndexOf(arr,value) {
+        var len=arr.length;
+        for(var i=0;i<len;i++){
+            if(value===arr[i]){
+                return i;
+            }
+        }
+        return -1;  //return，放在for循环外面
+    }
+    function ArrayLastIndexOf(arr,value) {
+        var len = arr.length;
+        for (var i = len - 1; i >= 0; i--) {
+            if (value === arr[i]) {
+                return i;
+            }
+        }
+        return -1;  //return，放在for循环外面
+    }
+    var colors=[ "green", "red", "yellow","blue", "blue", "green", "red", "yellow","green", "red", "yellow"];
+    console.log(ArrayIndexOf(colors,"blue"));//3
+    console.log(ArrayLastIndexOf(colors,"blue"));//4
 
 
 
