@@ -2,9 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>DOM-event</title>
+    <style>
+        li{
+            background-color: #8c8c8c;
+        }
+        .lock,lock1{
+            background-color: #8c8c8c;
+            border: 1px solid blueviolet;
+        }
+        .unlock ,.unlock1{
+            background-color: #0fff43;
+            border: 1px solid blueviolet;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<input type="button"  value="alert" onclick="alert('i am a button')"/> <!--引号内的引号要用单引号！！！！-->
+<input type="button"  value="alert" onclick="onclickFunction(this)"/>
+<input type="button"  value="alert" onmouseover="onmouseoverFn(this)" onmouseout= "onmouseoutFn(this)"/>
+<div>
+    <ul>
+        <li>西红柿</li>
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>葡萄</li>
+    </ul>
+</div>
+<input type="button" value="点击解锁" id="lock" class="lock"/>
+<div class="lock1" id="lock1">点击解锁</div>
+<script>
+    function onclickFunction(btn){  //传入一个this作为参数，就是传入了这个this所在的元素
+          btn.style.color="red";      //当鼠标点击时变为红色，这里就是js对元素样式的DOM样式修改
+          btn.style.backgroundColor="blue";      //当鼠标点击时变为红色，这里就是js对元素样式的DOM样式修改
+          btn.style.opacity="0.5";      //当鼠标点击时变为红色，这里就是js对元素样式的DOM样式修改   //怎么是这是背景颜色的透明度？？？？
+    }
+    function onmouseoverFn(btn){
+        btn.style.color="red";
+        btn.style.backgroundColor="yellow";
+        btn.style.opacity="0.5";
+    }
+    function onmouseoutFn(btn){
+        btn.style.color="red";
+        btn.style.backgroundColor="gray";
+        btn.style.opacity="0.5";
+    }
+    /*document.getElementsByTagName("li").onmouseover=function (arg){
+      arg.style.backgroudColor="blue";
+    }
+    上面的代码错误！！！！，因为这里得到的是数组，不能直接使用，要记得使用遍历
+    */
+    var arr=document.getElementsByTagName("li"); //通过标签获取到元素数组，数组不能直接使用方法，要用循环来遍历使用
+    var len=arr.length;   //在循环外计算长度值，避免每次循环都计算一次，
+    for(var i=0;i<len;i++){
+        arr[i].onmouseover=function () {      //这里使用的是匿名函数，还不带参数，看不懂这个调用函数声明什么鬼意思？？？？？？？
+            this.style.backgroundColor="blue";
+            this.style.opacity="0.5";
+        }
+    }
+    var lockbtn=document.getElementById("lock");
+    lockbtn.onclick=function () {
+        //做个功能：如果按钮显示 点击解锁/灰色背景，显示点击锁定/绿色背景
+        if(this.className==="lock"){
+            this.className="unlock";
+            this.removeAttribute("value");
+            this.setAttribute("value","点击锁定")
+        }else {                                     //有else之后就可以循环点击解锁/锁定了
+            this.className="lock";
+            this.removeAttribute("value");
+            this.setAttribute("value","点击解锁")
+        }
+    }
+    document.getElementById("lock1").onclick=function () {
+        //做个功能：如果按钮显示 点击解锁/灰色背景，显示点击锁定/绿色背景
+        if(this.className==="lock1"){
+            this.className="unlock1";
+            this.innerHTML="点击锁定";            //这是通过class来判断的，也可以用innerHTML来判断。
+        }else {                                     //有else之后就可以循环点击解锁/锁定了
+            this.className="lock1";
+            this.innerHTML="点击解锁";
+        }
+    }
+    //上面用的都是匿名函数来做的，我们可以用自定义的函数名来做。
+
+    function htmlClick() {
+        if(this.className==="lock1"){
+            this.className="unlock1";
+            this.innerHTML="点击锁定";            //这是通过class来判断的，也可以用innerHTML来判断。
+        }else {                                     //有else之后就可以循环点击解锁/锁定了
+            this.className="lock1";
+            this.innerHTML="点击解锁";
+        }
+    }
+    var htmlock1=document.getElementById("lock1");
+    htmlock1.onclick=htmlClick;
+                      //这里调用不能带括号，带括号的话打开网页就会执行这个函数了，带（）表示直接执行函数
+                                                     //语法里面规定带（）就是调用函数，也就是执行函数的意思
+                                                      //没有括号就是简单的把函数赋值给 htmlock1.onclick  需要人去点击之后才会有执行函数
+                                                      // 没有括号的话，它实际不是在函数，只是把函数赋值给 htmlock1.onclick。 函数在这里是个变量
+    //调用函数的话，应该是   函数名（参数1，参数2），函数没有参数的话就只是（），   不懂的话就回去看第6节
+    //问题：这个this再深入理解一下，怎么用？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+
+
+
+</script>
+<!-- DOM事件-->
+<!--  1、事件？
+            可以让html形成交互，
+            比如说我们网上购物的时候，选择商品然后点击添加到购物车，我们点击购物车就可以查看购物车，购物车里面就会有这个商品，
+            再支付成功之后又转到订单页面。点击提交订单，会转到支付页面。
+            事件就是文档或者是浏览器窗口中发生一些特定交互的瞬间。
+      2、绑定事件的方法
+             html事件：直接在html元素标签内添加事件，执行脚本。
+                     语法：<p 事件="执行脚本"></P>    功能：在html中绑定事件     说明：执行脚本可以是一个函数的调用,建议都封装成一个函数老调用，
+                     不建议使用html，它是在元素内使用的，效率低。
+             DOM0级事件：先获取DOM元素，  再.事件=执行脚本(可以是个匿名函数，封装好的函数)
+                     这个可以建立外部的js文件。可以对多个元素进行操作
+      3、this指向
+              在事件的触发函数中，this表示对该对象DOM的引用，简单来说就是事件在哪里，this就表示哪个标签！！！！就是这么简单！！！
+              this就是传入函数中的参数了。
+              this可以用在html事件，也可以用在DOM0级事件中！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+      4、事件类型
+            3.1鼠标事件  本节只学习其中3个
+
+               ②onclick     鼠标点击时
+               ③onmouseover 鼠标划过时
+               ④onmouseout  鼠标离开时
+
+-->
 </body>
 </html>

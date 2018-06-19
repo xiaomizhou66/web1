@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM-history</title>
+    <style>
+        .box{
+            width: 100%;
+            height: 1500px;
+        }
+        #box1{
+            background-color: #ff94d7;
+        }
+        #box2{
+            background-color: #1483ff;
+        }
+    </style>
+</head>
+<body>
+
+<!--/*<div>
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2">
+        <input type="button" value="返回顶部" id="backTop"/>
+    </div>
+
+</div>-->
+<script>
+    /*
+   //BOM 浏览器对象模型
+
+   /*
+   BOM 浏览器对象模型，  browser object model
+      BOM提供了window、location、history、screen、navigator、document、event 等对象，
+      他们的方法和属性可以对浏览器窗口进行访问和操作，使得js有能力与浏览器对话
+
+   //3、history  方法学习
+            history对象保存了用户在浏览器中访问页面的历史记录。
+            隐私问题，设计者无法知道用户访问的url地址。设置者可以得到的是一个列表，设计者可以根据这些列表来实现前进后退功能。
+
+           3.1     history.back()    其实就像浏览器中的后退按钮一样，我们可以在页面设置一个这样的按钮。
+                        功能：回到历史记录的上一步
+                        相当于使用history.go(-1)
+           3.2      history.forward  其实就像浏览器中的前进按钮一样，我们可以在页面设置一个这样的按钮。
+           3.3      location.go(n)   n是几就是几步
+                     n的值为正的时候是 前进， 也就是在历史记录中的后几步,前提条件是我们已经有浏览记录就了
+                     n为负的值的之后是 后退， 也就是历历史记录中的前几步，前提条件是我们已经有浏览记录就了
+     4、screen 方法学习
+             screen对象包含有关客户端显示屏幕的消息，这个对象不是常用的对象
+           4.1      screen.availWidth
+                        功能：返回可用的屏幕宽度,（除去地址栏状态栏等之后的。。。)
+           4.2      screen.availHeight
+                        功能：返回可用的屏幕高度，（除去地址栏状态栏等之后的。。。)
+
+                要与窗口的宽高区别，
+ */
+    document.write(screen.availWidth+"\n"); //缩小窗口的页面，这个值不会变          这个是（设备的屏幕除去工具栏地址栏这些之后）的屏幕大小
+    document.write(screen.availHeight+"\n");//缩小窗口的页面，这个值不会变         这个是（设备的屏幕除去工具栏地址栏这些之后）的屏幕大小
+    document.write(window.innerWidth+"\n");//缩小窗口的页面，这个值  会变  ，改变控制台的大小这个都变了，window就是我们可以看到的窗口
+    document.write(window.innerHeight+"\n");//缩小窗口的页面，这个值  会变  ，改变控制台的大小这个都变了，window就是我们可以看到的窗口
+
+/*    5、navigator 方法学习
+                navigator对象，它提供了用户的浏览器已经操作系统的信息。
+                通过这个我们可以知道现在用的是ie浏览器，还是谷歌浏览器，浏览器的版本，是移动端还是pc端 ，等等。
+                还有一些其他的，
+                比如：appCodeName获取浏览器的名称
+                比如：appName获取完整的浏览器的名称
+
+                5.1      navigator.UserAgent
+                            功能： 识别用户浏览器的名称，版本，引擎，以及操作系统等信息的内容
+ */
+    document.write(navigator.userAgent);
+
+    //下面来封装一个检测浏览器类型的函数
+    function getBrowser() {
+        var explorer=navigator.userAgent.toLowerCase();
+        var browser=null;
+        if(explorer.indexOf("msie",0)!==-1){
+            browser="IE"
+        }else if(explorer.indexOf("chrome",0)!==-1){
+            browser="Chrome"
+        }else if(explorer.indexOf("opera",0)!==-1){
+            browser="opera"
+        }else if(explorer.indexOf("safari",0)!==-1){
+            browser="safari"
+        }else {
+            browser="other"
+        }
+        return browser;
+    }
+   // document.write("您当前用的是"+getBrowser()+"浏览器");
+
+
+
+</script>
+</body>
+</htm>

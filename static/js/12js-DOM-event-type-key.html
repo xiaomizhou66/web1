@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>事件类型之 键盘类型</title>
+    <script>
+        window.onload = init;
+        function init() {/*
+            document.onkeydown = function (ev) {   //ev:event 表示事件的状态，如触发event对象的元素、鼠标的位置及状态等等
+                //ev 当发生onketdown这个事件的时候，    我们是在哪个元素的时候去触发这个事件的？鼠标在哪里？ 鼠标这个时候是一种什么状态？？
+                //还是不明白是什么鬼意思啊？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+                console.log(ev.keyCode);
+            }*/
+            document.onkeyup=function () {
+                var textareaBox=document.getElementById("textareadiv"); //获取文本框
+                var textareaValueLen=textareaBox.value.length;
+                var textCount=50-textareaValueLen;
+                document.getElementById("count50").innerHTML=textCount;
+            }
+        }
+    </script>
+    <style>
+        .inputtext{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<div class="tiptext">
+    <p>试用评价：至少50个字，您还需要输入<span id="count50">50</span>/50个字。</p>
+</div>
+<div class="inputtext">
+    <label>评价：</label>
+    <textarea class="textareadiv" id="textareadiv" cols="20" rows="5"></textarea>
+</div>
+
 </body>
 </html>
+
+<!-- 事件类型 -->
+<!--
+
+  1、1鼠标事件
+     ---------------------
+  2、键盘事件
+        2.1 onkeydown  当键盘的一个键被按下时（用户任意按下任意一个键时，都会触发这个事件）
+        2.2 onkeypress 当键盘的一个键被按下然后放开时（用户按下任意一个键  放松又没有完全放开  的时候，触发这个事件）？？？？？理解的对不对？？？
+        2.3 onleyup    当键盘的一个键被按下然后放开时（用户按下任意一个键  完全放开            的时候，触发这个事件）
+             其实也就是说我们按下任何一个键都会发生上面3种事件，我们不用管用什么事件，
+             重要的是我们需要知道用户按下的是什么键，得到它的值的代码，做出相应的改变
+             keycode属性：返回以上3种事件触发的  键的值   的字符代码，后者说是键的  代码

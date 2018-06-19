@@ -116,7 +116,7 @@
                                                     }
     */
 
-    /*               ⑥ 2 超时调用   与  间歇调用方法
+/*    /!*               ⑥ 2 超时调用   与  间歇调用方法
                                 js是单线程语言，意思就是说执行的代码必须是按照顺序进行的。
                                 但是它可以是可以被改变的，我们可以通过一些功能的设置来改变他。使得它的执行顺序发生改变
 
@@ -130,7 +130,7 @@
                             2.3间歇调用     window.setInterval（"code"，millisec毫秒），每隔毫秒执行一次代码     interval：翻译，间隔，幕间休息，区间，休息时间，音程，
                                  返回：一个id值，可以通过它来取消间歇调用
                             2.4 取消间歇调用 window.clearInterval（id）
-                                             */
+                                             *!/
                                             setTimeout("alert('hello')", 2000);
                                             var closeArg = document.getElementById("quit")
                                             closeArg.onclick = function () {
@@ -153,7 +153,44 @@
                                             setTimeout(function () {      //10s后取消间歇调用
                                                 clearInterval(setIntervalId);
                                             },10000);
-                                            //可以设置一段文字用动态的方式慢慢打印出来么？？？？怎么弄 ？？？
+                                            //可以设置一段文字用动态的方式慢慢打印出来么？？？？怎么弄 ？？？*/
+
+
+                                           //应用：
+                                           // 给定一个数值1，让数值每个1秒递增1，当数值等于10的时候就停止递增
+
+                                            var num=1,max=10;
+                                            var setintervalId=setInterval(function numUp() {
+                                                    document.write(num); //打印的不是字符串不用引号，这句要在num++前面，不然就是从2开始输出了
+                                                    num++;
+                                                    if(num>max){
+                                                        clearInterval(setintervalId);
+                                                    }
+
+                                            },1000)//在函数里面写死循环就好，然后用清除间歇调用来取消就好
+
+
+
+
+
+                                            //也可以用超时调用来实现，虽然超时调用只能执行一次，但是我们可以利用它的返回值id进行操作。
+                                            //用id来自身调用 这个超时调用
+                                            var  num1=1,max1=10;
+                                            function isCreaseNum() {   //设置一个递增函数，
+                                                document.write(num1);
+                                                num1++;
+                                                if(num1<=max1){
+                                                    setTimeout(isCreaseNum(),1000);//调用函数自身
+                                                }else {
+                                                    clearInterval(setTimeoutId)
+                                                }
+                                            }
+                                            var setTimeoutId=setTimeout(function () {   //设置超时调用，1s之后去小勇递增函数1次  ，这个不能多次，还要在函数里面设置多次调用这个超时调用，就多次了
+                                                isCreaseNum();
+                                            },1000)
+
+
+
 </script>
 
 </body>
