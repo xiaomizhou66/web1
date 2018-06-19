@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+
+<!-- DOM 是html元素内的文本，不包括图片等-->
+
+
+
+
+<!--1、查找DOM元素 document.getElementById("");document.getElementByTagName("")   内联方式是文档在前，script在后的。先有文档，才能操作文档-->
+<!--
+ <div class="box" id="hello">
+                        <p>hello</p>
+                    </div>
+                    <div class="box1" id="hello1">
+                        <p>hello1</p>
+                    </div>
+                    <div class="box2" id="hello2">
+                        <p>hello2</p>
+                    </div>
+                    <ul class="liuMei" id="mei">
+                        <li>liumei1</li>
+                        <li>liumei2</li>
+                        <li>liumei3</li>
+                    </ul>
+                    <ul class="myCars" id="cars">
+                        <li>宝马</li>
+                        <li>miniCooper</li>
+                    </ul>
+<script>
+    /* DOM:就是html文档标签内容。    DOM：全称document */
+                        /*通过ID来获某个DOM文档，也就是查找DOM
+                        语法：document.getElementById("id值")     返回DOM对象*/                                               //返回对应的单个文档
+                        //如果页面不小心写了2个元素的id是一样的，那么用这方法获取DOM的时候只会选择到第一个用id的元素
+                        var arg = document.getElementById("hello");
+                        console.log(arg);//<div class="box" id="hello"><p>hello</p></div>   获取到对应的元素打印出来，
+                        console.log(document.getElementById("ok"));//null                   没有id为ok的DOM，
+
+
+                        /*    通过标签名字来获取DOM文档，可以是一个，可以是很多个DOM元素对象                                       //返回数组
+                              语法：document.getElementsByTagName("标签名")*/
+                        var arr = document.getElementsByTagName("p");
+                        console.log(arr);//HTMLCollection(3) [p, p, p]
+                        var cars = document.getElementsByTagName("li");
+                        console.log(cars.length);//5
+                        console.log(cars);//HTMLCollection(5) [li, li, li, li, li]
+                        var cars1=document.getElementById("cars").getElementsByTagName("li");
+                        console.log(cars1);//HTMLCollection(2) [li, li]
+                     </script>
+
+-->
+
+
+<!--/*2、修改DOM样式   document.getElementById("").style.fontSize=""; document.getElementByTagName("").style.fontSize="";
+后者可能需要遍历，它得到的是数组，不能修数组进行样式修改  。内联方式是文档在前，script在后的。先有文档，才能操作文档-->
+<!--修改DOM元素样式（做到动态改变，之前的css是固定的样式）,是对DOM设置样式，是数组的时候需要遍历成元素
+
+<div class="box" id="hello">
+    <p>hello</p>
+</div>
+<div class="box1" id="hello1">
+    <p>hello1</p>
+</div>
+<div class="box2" id="hello2">
+    <p>hello2</p>
+</div>
+<ul class="liuMei" id="mei">
+    <li>liumei1</li>
+    <li>liumei2</li>
+    <li>liumei3</li>
+</ul>
+<ul class="myCars" id="cars">
+    <li>宝马</li>
+    <li>miniCooper</li>
+</ul>
+<script>
+    //2、修改DOM元素样式（做到动态改变，之前的css是固定的样式）,是对DOM设置样式，是数组的时候需要遍历成元素
+    //语法：
+    var arg = document.getElementById("hello");//<div class="box" id="hello"><p>hello</p></div>
+    console.log(arg);
+    arg.style.color="red";  //把元素的样式改为红色
+    arg.style.border="1px solid blue"; //设置边框的样式
+    arg.style.fontSize="50px"; //样式名称不能用-符号连接了，是用驼峰的形式。
+    var cars=document.getElementById("cars").getElementsByTagName("li");  //得到的是数组，需要对里面的元素进行操作的话，需要用到遍历来操作
+    var len=cars.length;
+    for(var i=0;i<len;i++){
+        cars[i].style.color="yellow";   //必须以是对元素进行操作，要写 cars[i]，不能直接邪恶cars，这个是数组，不能对数组进行样式设置的
+        if(i===0){
+            cars[i].style.backgroundColor="green";
+            cars[i].style.opacity="0.5";
+        }else{
+            cars[i].style.backgroundColor="gray";
+            cars[i].style.opacity="0.5";
+        }
+    }
+</script>
+-->
+
+
+<!--3、获取html内容 document.getElementById("").innerHTML ;  内联方式是文档在前，script在后的。先有文档，才能操作文档
+       给html内容替换更新内容document.getElementById("").innerHTML="";   -->
+<!--
+<div class="box" id="hello">
+    <p>hello</p>
+</div>
+<div class="box1" id="hello1">
+    <p>hello1</p>
+</div>
+<div class="box2" id="hello2">
+    <p>hello2</p>
+</div>
+<ul class="liuMei" id="mei">
+    <li><i>liumei1</i></li>
+    <li><b>liumei2</b></li>
+    <li>liumei3</li>
+</ul>
+<ul class="myCars" id="cars">
+    <li>宝马</li>
+    <li>miniCooper</li>
+</ul>
+<script>
+    var meis = document.getElementById("mei").getElementsByTagName("li");  //得到的是数组，需要对里面的元素进行操作的话，需要用到遍历来操作
+    var len = meis.length;
+    for (var i = 0; i < len; i++) {
+        meis[i].style.color = "yellow";   //必须以是对元素进行操作，要写 cars[i]，不能直接邪恶cars，这个是数组，不能对数组进行样式设置的
+        console.log(meis[i].innerHTML);// 获取这些li标签里面的html内容
+        console.log(meis[i].innerHTML+" is pretty!")
+                                        // <i>liumei1</i>
+                                        //<i>liumei1</i> is pretty!
+                                        // <b>liumei2</b>
+                                        //<b>liumei2</b> is pretty!
+                                        // liumei3
+                                        //liumei3 is pretty!
+    }
+    console.log(document.getElementById("hello").innerHTML="ok");//ok   获取html内容并且修改它 然后就可以看到页面中的这个id下的这个内容就会被修改了，
+</script>
+-->
+
+
+<!--4、获取元素的class属性: document.getElementById("").className; 内联方式是文档在前，script在后的。先有文档，才能操作文档
+        给元素定义class属性: document.getElementById("").className=""   -->
+<!--
+<div class="box" id="hello">
+    <p>hello</p>
+</div>
+<div class="box1" id="hello1">
+    <p>hello1</p>
+</div>
+<div class="box2" id="hello2">
+    <p>hello2</p>
+</div>
+<ul class="liuMei" id="mei">
+    <li><i>liumei1</i></li>
+    <li><b>liumei2</b></li>
+    <li>liumei3</li>
+</ul>
+<ul class="myCars yourCars" id="cars">
+    <li>宝马</li>
+    <li>miniCooper</li>
+</ul>
+<script>
+    console.log(document.getElementById("mei").className);//liuMei   获取元素的class属性（当然需要先定位过去才能获取了）
+    var meis = document.getElementById("mei").getElementsByTagName("li");  //得到的是数组，需要对里面的元素进行操作的话，需要用到遍历来操作
+    var len = meis.length;
+    for (var i = 0; i < len; i++) {
+        meis[2].className = "list3";           //给数组中i=2的元素，也就是列表中的第三个项设置class属性为list3
+    }
+    console.log(document.getElementById("mei"));
+    /*    <ul class="liuMei" id="mei">
+                <li><i>liumei1</i></li>
+                <li><b>liumei2</b></li>
+                <li class="list3">liumei3</li>
+           </ul>*/
+    document.getElementById("mei").className = "Mei";//修改原来的class属性名称
+    console.log(document.getElementById("mei"));//
+    /*    <ul class="Mei" id="mei">  //原来的class被修改了
+            <li><i>liumei1</i></li>
+            <li><b>liumei2</b></li>
+            <li class="list3">liumei3</li>
+       </ul>*/
+    console.log(document.getElementById("cars").className);// myCars yourCars    两个class名称都会被获取到，
+    //document.getElementsByClassName("list3").style.backgroundColor = "red";  这个句子后面再学习怎么使用吧，这里为什么会不正确啊？？？？
+</script>
+-->
+
+
+<!--4、获取元素的getAttribute属性(一个元素可能会有很多属性值) ??.getAttribute("id/class/text-align等等");内联方式是文档在前，script在后的。先有文档，才能操作文档
+                                 通过id属性获取到DOM对象，也可以  直接用   .属性  获取其他属性 不需要每个都去用getAttribute方法-->
+<!--
+<div class="box" id="hello" datatype="string" style="background: #ff94d7;opacity: 0.5 ">
+    <p>hello</p>
+</div>
+<div class="box1" id="hello1">
+    <p>hello1</p>
+</div>
+<div class="box2" id="hello2">
+    <p>hello2</p>
+</div>
+<ul class="liuMei" id="mei">
+    <li><i>liumei1</i></li>
+    <li><b>liumei2</b></li>
+    <li>liumei3</li>
+</ul>
+<ul class="myCars yourCars" id="cars">
+    <li>宝马</li>
+    <li>miniCooper</li>
+</ul>
+<script>
+    var arg = document.getElementById("hello");
+    console.log(arg.getAttribute("id"));//hello   用getAttribute方法
+    console.log(arg.id); //hello                  直接用  对象.属性的办法(这种是需要标签自带属性带可以的，人为添加的是不可以的。
+    //还是getAttribute 这样保险！
+    console.log(arg.class);//undefined    虽然自带但是class不能这样直接用，它比较特殊
+    console.log(arg.className);//box     class必须是之前的办法，用.className来获取，
+    console.log(arg.getAttribute("class"));//box 用.getAttribute办法获取
+    console.log(arg.datatype);// undefined  datatype非自带就不能用了！
+    console.log(arg.getAttribute("datatype"));//string    用.getAttribute办法获取
+    console.log(arg.style);//   style自带可以用,但是这里是一堆乱码啊，还是不要用这个办法了
+    console.log(arg.getAttribute("style"));//background: #ff94d7;opacity: 0.5    用.getAttribute办法获取
+</script>
+-->
+
+
+
+<!--5、增加属性/设置属性值setAttribute 设置属性值 ??.setAttribute("新的属性名称？？",属性名称对应的值value??)   在括号里面写上新的属性值
+            如果value是字符串的话需要添加上引号， 另外：setAttribute方法有兼容性的问题，有的时候需要考虑到兼容的问题
+            不能设置原有的值-->
+<!--6、删除属性/设置属性值removeAttribute 设置属性值 ??.removeAttribute("原有的属性名称")   -->
+
+<div class="box" id="hello" datatype="string" style="background: #ff94d7;opacity: 0.5 ">
+    <p>hello</p>
+</div>
+<script>
+    var arg = document.getElementById("hello");
+    arg.setAttribute("border","1px dashed black");//   用getAttribute方法
+    console.log(arg);
+                      //          <div class="box" id="hello" datatype="string" style="background: #ff94d7;opacity: 0.5  border:1px dashed black>
+                      //          <p>hello</p>
+                      //          </div>
+                      //       这里打印的是已经删除掉的东西,后面来学习？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+    arg.removeAttribute("class");
+    console.log(arg);
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

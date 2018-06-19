@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件类型</title>
+    <style>
+        .fromtext, .frominput {
+            float: left;
+        }
+
+        .nulldiv {
+            clear: both;
+        }
+
+        .fromtext {
+            text-align: right;
+        }
+
+        .frominput {
+            text-align: left;
+        }
+
+        .tip, .passtip, .nopasstip {
+            display: none;
+            font-size: 14px;
+            width: 5px;
+            height: 5px;
+            line-height: 5px;
+        }
+
+        .my-icon {
+            width: 1.8em;
+            height: 1.8em;
+            vertical-align: -0.5em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+    <script src="https://at.alicdn.com/t/font_699026_3zxvk1k6o4.js"></script>
+    <script>
+        //onload 事件应用
+        /*        可以写成这样
+                window.onload=init;
+                function init(){
+
+                }*/  //然后再这个括号里面写上我们的js其他语句
+
+        window.onload = function () {
+            var listmi = document.getElementById("listbox");      //onload 事件，作用在windows上，程序到这段代码的时候，看到是作用在Windows上的，它会先跳过这段代码，
+            listmi.style.backgroundColor = "gary";                 //先去执行其他的代码，把body解析完了，才会去执行onload函数里面的脚本。
+            listmi.style.border = "1px solid blue";
+            listmi.onclick = function () {
+                this.style.backgroundColor = "green";
+            };  //这里也是一个语句，后面要有分号？？？？？？？？？？？？？？？？？？？其他的语句怎么不放？？？？？
+            //onfocus事件应用
+            var inputarg = document.getElementById("phone");
+            inputarg.onfocus = function onFocus() {
+                document.getElementById("tip").style.display = "inline";
+            };
+            //onblur事件应用
+            inputarg.onblur = function isPass() {
+                var lenvalue = inputarg.value.length;//也可以用 inputarg.value来获取value值，因为value是input元素自带的属性
+                var charAtvalue = inputarg.value.charAt(0);
+                console.log(lenvalue);
+                console.log(charAtvalue);
+                if (isNaN(inputarg.value) == false && lenvalue === 11 && charAtvalue == 1) {
+                    //document.getElementById("passtip").style.display = "inline";
+                    document.getElementById("tip").innerHTML = '<svg class=" my-icon" aria-hidden="true"><use xlink:href="#icon-yanzhengtongguo1"></use></svg>';
+                } else {
+                    //document.getElementById("nopasstip").style.display = "inline";
+                    document.getElementById("tip").innerHTML = '<svg class=" my-icon" aria-hidden="true"><use xlink:href="#icon-butongguo"></use></svg>';
+                }
+            }
+            //onchange事件应用
+            var selectList = document.getElementById("selectlist");
+            selectList.onchange = function option() {
+                var colorList = this.value;
+                //console.log(colorList);
+                //不需要switch这么麻烦！！！直接设置背景色等于我们获得的value值就ok了！！！！！！！！！！！
+                if (colorList == "") {         //要考虑去掉第一行的提示语段
+                    return;                    //什么都不执行，用return来中断
+                } else {
+                    document.body.style.backgroundColor = colorList;
+                }
+                /*              switch (colorList) {
+                                  case " ":
+                                      break;
+                                  case "yellow":   //字符串不要忘记引号引起来！！！！！！！！！！！！！！！！！！！！！！！！！
+                                      document.body.style.backgroundColor = "yellow";
+                                      break;
+                                  case "red":
+                                      document.body.style.backgroundColor = "red";
+                                      break;
+                                  case "black":
+                                      document.body.style.backgroundColor = "black";
+                                      break;
+                                  case "gray":
+                                      document.body.style.backgroundColor = "gray";
+                                      document.body.style.opacity = "0.1";  //为什么设置透明度会变得模糊？？？？？？？？？？？？？？？？？？
+                                      break;
+                                  case "blue":
+                                      document.body.style.backgroundColor = "blue";
+                                      document.body.style.opacity = "0.1";
+                                      break;
+                                  case "green":
+                                      document.body.style.backgroundColor = "green";
+
+                                      break;
+                              }
+                          }*/
+                /*           var optionList = document.getElementById("selectlist").getElementsByTagName("option");  //用id得到的不是数组哦，下面错了
+                        var optionListLen = optionList.length;
+                           for (var i = 0; i < optionListLen; i++) {
+                               optionList[i].onchange = function option() {
+                                   switch (i) {
+                                       case 0:
+                                       case 1:
+                                           document.getElementsByTagName("body").style.backgroundColor = "yellow";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                       case 2:
+                                           document.getElementsByTagName("body").style.backgroundColor = "red";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                       case 3:
+                                           document.getElementsByTagName("body").style.backgroundColor = "black";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                       case 4:
+                                           document.getElementsByTagName("body").style.backgroundColor = "gray";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                       case 5:
+                                           document.getElementsByTagName("body").style.backgroundColor = "blue";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                       case 6:
+                                           window.style.backgroundColor = "green";
+                                           document.getElementsByTagName("body").style.opacity = "0.5";
+                                           break;
+                                   }
+                               }
+            }*/
+            }
+            // onmousedown事件与onmouseup事件（完成onclick事件）
+        }
+    </script>
+</head>
+<body>
+
+<div id="listbox" class="listbox">
+    <ul>
+        <li>mi1</li>
+        <li>mi2</li>
+        <li>mi3</li>
+        <li>mi4</li>
+        <li>mi5</li>
+    </ul>
+</div>
+
+<div>
+    <div class="fromtext">
+        <div>用户名：</div>
+        <div>密&nbsp&nbsp码：</div>
+        <div>手机号：</div>
+    </div>
+    <div class="frominput">
+        <div><input type="text" placeholder="请输入用户名"/></div>
+        <div><input type="password" placeholder="请输入密码"/></div>
+        <input type="text" placeholder="请输入手机号码" id="phone"/>  <!--手机号码11位-->
+        <div class="tip" id="tip">请输出正确的手机号码</div>
+        <!--
+            <div class="passtip" id="passtip">
+                    <svg class=" my-icon" aria-hidden="true">
+                        <use xlink:href="#icon-yanzhengtongguo1"></use>
+                    </svg>
+            </div>
+            <div class="nopasstip" id="nopasstip">
+                    <svg class=" my-icon" aria-hidden="true">
+                        <use xlink:href="#icon-butongguo"></use>
+                    </svg>
+            </div>
+            我们可以用innerHTML=？？来改变tip文本的值,把svg写在js里面，可以多次使用svg
+         -->
+    </div>
+</div>
+
+<div class="nulldiv"></div>
+<div class="selectdiv">
+    <select class="selectlist" id="selectlist">
+        <option value="colors">请选择您的背景色</option>
+        <option value="yellow">黄色</option>
+        <option value="red">红色</option>
+        <option value="black">黑色</option>
+        <option value="gray">灰色</option>
+        <option value="blue">蓝色</option>
+        <option value="green">绿色</option>
+    </select>
+</div>
+
+
+<div class="box" id="box">拖动</div>
+
+</body>
+</html>
+
+
+<!-- 事件类型 -->
+<!--
+1、事件类型
+  1.1鼠标事件
+        ①onload      页面加载时
+                在第10节发现了一个问题，<script></script>需要放在html内容后面，我们查找元素的时候才不会为空，
+                因为html是按照顺序执行的，<script></script>放在前面的话是找不到后面的html，DOM元素的。
+                如果我们需要把<script></script>放在DOM前面或者放在<head></head>里面，我们就需要借助onload事件来辅助。
+                让<script></script>是在页面加载的时候（就是DOM已经加载了，存在了）再执行script，我们去查找就不会为null了
+                在<script></script>里面还要先写上一个onload事件，其他事件写在onload事件函数里面。
+                            onload 事件，作用在windows上，程序到这段代码的时候，看到是作用在Windows上的，
+                            它会先跳过这段代码，先去执行其他的代码，把body解析完了，才会去执行onload函数里面的脚本。
+                windows.onload 只可以用一次。
+                还有一个unload，页面卸载的时候用，也是作用在Windows上的，这个不常用，了解就好
+        ②onclick     鼠标点击时,见第10节
+        ③onmouseover 鼠标划过时,见第10节
+        ④onmouseout  鼠标离开时,见第10节
+        ⑤onfocus     获得焦点时，光标放在文本框中
+                            指的是当我们鼠标单击进文本框中的时候显示的东西
+                            用在表单元素里面，type=text  ，password  的时候可以用。还有textarea可以用。不能用于其他时候
+        ⑥onblur      失去焦点时，光标离开文本框
+                            离开我们的文本框，提示的信息。（可以用与检测文本信息的输入正确与否）
+        ⑦onchange    域的内容发生改变时
+                   用在单选框  radio
+                   复选框      checkbox
+                   下拉菜单    select
+
+
+        ⑧onsubmit 表单中的确认按钮被点击时
+                 提交按钮，
+                 onsubmit 事件不是加在按钮上，而是加在表单标签！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+
+        ⑨onmousedown 鼠标按钮在元素按下时（⑨⑪组成onclick）
+        ⑩onmousemove 鼠标指针移动时（指的时鼠标在元素所在的盒子内移动时）
+        ⑪onmouseup   在元素上松开鼠标按钮时（⑨⑪组成onclick）
+
+
+        ⑫onresize    调整浏览器页面窗口时（作用在window上）
+        ⑬onscroll    拖动滚动条时（作用在window上/元素上）
+
+         ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
+        -->
